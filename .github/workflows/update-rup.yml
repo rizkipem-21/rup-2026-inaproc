@@ -3,7 +3,7 @@ name: Update RUP Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 22 * * *'   # 05:00 WIB (UTC+7)
+    - cron: '0 22 * * *'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -44,8 +44,10 @@ jobs:
       - name: Install Python Dependencies
         run: pip install pandas
 
-      - name: Run Python Script
-        run: python generate.py
+      - name: Run Python Script (DEBUG)
+        run: |
+          ls -la
+          python generate.py
 
       - name: Commit & Push Data
         run: |
