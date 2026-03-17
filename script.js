@@ -1,38 +1,42 @@
+// ==========================
+// LOAD DATA RUP
+// ==========================
+
 async function loadData() {
     try {
-        const data = await fetch("data/rekap.json").then(r => r.json());
+        console.log("Fetch mulai...");
 
-        console.log("Rekap:", data);
+        const response = await fetch("data/rekap.json");
 
-        const output = document.getElementById("output");
+        if (!response.ok) {
+            throw new Error("Gagal fetch data");
+        }
 
+        const data = await response.json();
+
+        console.log("Data berhasil:", data);
+
+        // ==========================
+        // TAMPILKAN DATA
+        // ==========================
         if (!data || data.length === 0) {
-            output.innerText = "Data kosong";
+            document.getElementById("output").innerText = "Data kosong";
             return;
         }
 
-        let text = "";
-
-        data.forEach(item => {
-            text += `
-Satuan Kerja : ${item["Satuan Kerja"]}
-Pagu Program : ${item["Pagu Program"]}
-RUP Penyedia : ${item["RUP Penyedia"]}
-RUP Swakelola : ${item["RUP Swakelola"]}
-Total RUP : ${item["Total RUP Terumumkan"]}
-Persentase : ${item["Persentase"]}%
-
-----------------------------------------
-`;
-        });
-
-        output.innerText = text;
+        // tampilkan sebagai JSON rapi
+        document.getElementById("output").innerText =
+            JSON.stringify(data, null, 2);
 
     } catch (error) {
-        console.error("Error:", error);
+        console.error("ERROR:", error);
+
         document.getElementById("output").innerText =
-            "Gagal load data: " + error;
+            "ERROR LOAD DATA\n\n" + error;
     }
 }
 
+// ==========================
+// JALANKAN
+// ==========================
 loadData();
