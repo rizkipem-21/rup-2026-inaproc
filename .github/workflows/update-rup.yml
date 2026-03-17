@@ -11,13 +11,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # ✅ update versi
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
 
       - name: Buat folder data
         run: mkdir -p data
 
-      - name: Download semua endpoint INAPROC
+      - name: Download semua endpoint
         run: |
+          set +e   # ⛔ JANGAN STOP kalau error
+
           TOKEN="inprc7642391c38774272bf57ca25ac1d4544"
           BASE_URL="https://data.inaproc.id/api/legacy/rup"
           KODE="D228"
@@ -36,37 +41,33 @@ jobs:
             url="$BASE_URL/$ep?kode_klpd=$KODE&tahun=$TAHUN"
             filename="data/Legacy_${ep}_${TAHUN}.json"
 
-            echo ""
             echo "==============================="
             echo "Download: $url"
-            echo "Simpan ke: $filename"
 
-            # request API
-            response=$(curl -s -H "Authorization: Bearer $TOKEN" "$url")
+            # curl dengan status code
+            http_code=$(curl -s -w "%{http_code}" -H "Authorization: Bearer $TOKEN" "$url" -o response.json)
 
-            # ==============================
-            # VALIDASI RESPONSE
-            # ==============================
+            echo "HTTP CODE: $http_code"
 
-            if [ -z "$response" ]; then
-              echo "Response kosong → buat file []"
+            if [ "$http_code" != "200" ]; then
+              echo "Gagal → buat file kosong"
               echo "[]" > $filename
+              continue
+            fi
 
+            # validasi JSON
+            jq . response.json > $filename 2>/dev/null
+
+            if [ $? -ne 0 ]; then
+              echo "JSON tidak valid → fallback []"
+              echo "[]" > $filename
             else
-              # cek apakah valid JSON
-              echo "$response" | jq . > $filename 2>/dev/null
-
-              if [ $? -ne 0 ]; then
-                echo "JSON tidak valid → fallback []"
-                echo "[]" > $filename
-              else
-                echo "SUKSES"
-              fi
+              echo "SUKSES simpan $filename"
             fi
 
           done
 
-      - name: Commit & Push ke GitHub
+      - name: Commit & Push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
