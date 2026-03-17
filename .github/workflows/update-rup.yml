@@ -3,7 +3,7 @@ name: Update RUP Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '0 22 * * *'   # 05:00 WIB
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -41,15 +41,13 @@ jobs:
           "https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026" \
           -o data/Legacy_rup_struktur-anggaran-pd_2026.json
 
-      - name: Install Python Dependencies
+      - name: Install Pandas
         run: pip install pandas
 
-      - name: Run Python Script (DEBUG)
-        run: |
-          ls -la
-          python generate.py
+      - name: Run Python Script
+        run: python generate.py
 
-      - name: Commit & Push Data
+      - name: Commit & Push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
