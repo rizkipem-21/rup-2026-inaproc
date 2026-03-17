@@ -1,59 +1,133 @@
 name: Update RUP Data
 
-permissions: 
-  contents: write
-
 on:
-  workflow_dispatch:
   schedule:
     - cron: '0 22 * * *'   # 05:00 WIB
+  workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+permissions:
+  contents: write
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
-      - name: Checkout Repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare Folder
-        run: mkdir -p data
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Download Data from INAPROC
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch & Build Rekap
         run: |
-          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
-          "https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026" \
-          -o data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+          python <<EOF
+          import requests, json, os
 
-          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
-          "https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026" \
-          -o data/Legacy_rup_paket-swakelola-terumumkan_2026.json
+          os.makedirs("data", exist_ok=True)
 
-          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
-          "https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026" \
-          -o data/Legacy_rup_master-satker_2026.json
+          headers = {
+              "Authorization": "Bearer ${{ secrets.INAPROC_TOKEN }}"
+          }
 
-          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
-          "https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026" \
-          -o data/Legacy_rup_program-master_2026.json
+          urls = {
+              "penyedia": "https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026",
+              "swakelola": "https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026",
+              "master": "https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026"
+          }
 
-          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
-          "https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026" \
-          -o data/Legacy_rup_struktur-anggaran-pd_2026.json
+          def ambil(url):
+              try:
+                  r = requests.get(url, headers=headers, timeout=60)
 
-      - name: Install Pandas
-        run: pip install pandas
+                  print("URL:", url)
+                  print("STATUS:", r.status_code)
 
-      - name: Run Python Script
-        run: python generate.py
+                  if r.status_code != 200:
+                      return []
+
+                  data = r.json()
+
+                  # handle format {"data": [...]}
+                  if isinstance(data, dict) and "data" in data:
+                      return data["data"]
+
+                  # handle langsung array
+                  if isinstance(data, list):
+                      return data
+
+                  return []
+
+              except Exception as e:
+                  print("ERROR:", e)
+                  return []
+
+          penyedia = ambil(urls["penyedia"])
+          swakelola = ambil(urls["swakelola"])
+          master = ambil(urls["master"])
+
+          print("Jumlah penyedia:", len(penyedia))
+          print("Jumlah swakelola:", len(swakelola))
+          print("Jumlah master:", len(master))
+
+          # ==========================
+          # VALIDASI DATA
+          # ==========================
+          if len(master) == 0:
+              print("MASTER KOSONG -> STOP")
+              with open("data/rekap.json", "w") as f:
+                  json.dump([], f)
+              exit()
+
+          # ==========================
+          # REKAP
+          # ==========================
+          rekap = {}
+
+          for row in master:
+              kd = row.get("kd_satker")
+              if not kd:
+                  continue
+
+              rekap[kd] = {
+                  "Satuan Kerja": row.get("nama_satker"),
+                  "RUP Penyedia": 0,
+                  "RUP Swakelola": 0
+              }
+
+          for row in penyedia:
+              kd = row.get("kd_satker")
+              if kd in rekap:
+                  rekap[kd]["RUP Penyedia"] += float(row.get("pagu", 0))
+
+          for row in swakelola:
+              kd = row.get("kd_satker")
+              if kd in rekap:
+                  rekap[kd]["RUP Swakelola"] += float(row.get("pagu", 0))
+
+          hasil = list(rekap.values())
+
+          # ==========================
+          # SIMPAN
+          # ==========================
+          with open("data/rekap.json", "w", encoding="utf-8") as f:
+              json.dump(hasil, f, indent=2, ensure_ascii=False)
+
+          print("rekap.json berhasil dibuat:", len(hasil), "baris")
+          EOF
 
       - name: Commit & Push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/*
+          git add data/rekap.json
           git commit -m "update data otomatis" || echo "no changes"
-          git push origin HEAD:main
+          git push
