@@ -16,7 +16,7 @@ jobs:
       INAPROC_TOKEN: ${{ secrets.INAPROC_TOKEN }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -24,10 +24,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install
         run: pip install requests
 
-      - name: Fetch & Build Rekap
+      - name: RUN SCRIPT
         run: |
           python <<EOF
           import requests, json, os
@@ -35,97 +35,47 @@ jobs:
           os.makedirs("data", exist_ok=True)
 
           TOKEN = os.getenv("INAPROC_TOKEN")
+          print("TOKEN:", TOKEN[:10] if TOKEN else "KOSONG")
 
-          if not TOKEN:
-              print("TOKEN TIDAK TERBACA!")
+          headers = {}
+          if TOKEN:
+              headers["Authorization"] = f"Bearer {TOKEN}"
+
+          url = "https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026"
+
+          try:
+              r = requests.get(url, headers=headers, timeout=60)
+
+              print("STATUS:", r.status_code)
+              print("RESPONSE SAMPLE:", r.text[:300])
+
+              if r.status_code != 200:
+                  raise Exception("API ERROR")
+
+              data = r.json()
+
+              if isinstance(data, dict) and "data" in data:
+                  data = data["data"]
+
+              print("JUMLAH DATA:", len(data))
+
+              # SIMPAN APA ADANYA DULU (BIAR PASTI ADA ISI)
+              with open("data/rekap.json", "w", encoding="utf-8") as f:
+                  json.dump(data, f, indent=2, ensure_ascii=False)
+
+              print("BERHASIL SIMPAN")
+
+          except Exception as e:
+              print("ERROR:", e)
+
               with open("data/rekap.json", "w") as f:
                   json.dump([], f)
-              exit()
-
-          headers = {
-              "Authorization": f"Bearer {TOKEN}"
-          }
-
-          urls = {
-              "penyedia": "https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026",
-              "swakelola": "https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026",
-              "master": "https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026"
-          }
-
-          def ambil(url):
-              try:
-                  r = requests.get(url, headers=headers, timeout=60)
-
-                  print("URL:", url)
-                  print("STATUS:", r.status_code)
-
-                  if r.status_code != 200:
-                      print("RESP:", r.text[:200])
-                      return []
-
-                  data = r.json()
-
-                  if isinstance(data, dict) and "data" in data:
-                      return data["data"]
-
-                  if isinstance(data, list):
-                      return data
-
-                  return []
-
-              except Exception as e:
-                  print("ERROR:", e)
-                  return []
-
-          penyedia = ambil(urls["penyedia"])
-          swakelola = ambil(urls["swakelola"])
-          master = ambil(urls["master"])
-
-          print("Jumlah master:", len(master))
-          print("Jumlah penyedia:", len(penyedia))
-          print("Jumlah swakelola:", len(swakelola))
-
-          if len(master) == 0:
-              print("MASTER KOSONG -> STOP")
-              with open("data/rekap.json", "w") as f:
-                  json.dump([], f)
-              exit()
-
-          rekap = {}
-
-          for row in master:
-              kd = row.get("kd_satker")
-              if not kd:
-                  continue
-
-              rekap[kd] = {
-                  "Satuan Kerja": row.get("nama_satker"),
-                  "RUP Penyedia": 0,
-                  "RUP Swakelola": 0
-              }
-
-          for row in penyedia:
-              kd = row.get("kd_satker")
-              if kd in rekap:
-                  rekap[kd]["RUP Penyedia"] += float(row.get("pagu", 0))
-
-          for row in swakelola:
-              kd = row.get("kd_satker")
-              if kd in rekap:
-                  rekap[kd]["RUP Swakelola"] += float(row.get("pagu", 0))
-
-          hasil = list(rekap.values())
-
-          with open("data/rekap.json", "w", encoding="utf-8") as f:
-              json.dump(hasil, f, indent=2, ensure_ascii=False)
-
-          print("rekap.json berhasil dibuat:", len(hasil))
           EOF
 
-      - name: Commit & Push
+      - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/rekap.json
-          git commit -m "update data otomatis" || echo "no changes"
+          git commit -m "update data debug" || echo "no changes"
           git push
