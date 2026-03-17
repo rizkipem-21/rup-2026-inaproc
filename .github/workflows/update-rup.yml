@@ -1,72 +1,126 @@
-name: Update RUP INAPROC
+name: Update RUP Data
 
 on:
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "0 22 * * *"  # 05:00 WIB
   workflow_dispatch:
-
-permissions:
-  contents: write   # ✅ INI PENTING
 
 jobs:
   download:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
-
-      - name: Buat folder data
-        run: mkdir -p data
-
-      - name: Download semua endpoint
+      # =========================================
+      # DOWNLOAD DATA (CURL)
+      # =========================================
+      - name: Download JSON
         run: |
-          set +e
+          mkdir -p data
 
-          TOKEN="inprc7642391c38774272bf57ca25ac1d4544"
-          BASE_URL="https://data.inaproc.id/api/legacy/rup"
-          KODE="D228"
-          TAHUN="2026"
+          echo "Download Penyedia..."
+          curl -L "ISI_URL_PENYEDIA" -o data/Legacy_rup_paket-penyedia-terumumkan_2026.json
 
-          endpoints=(
-            "paket-penyedia-terumumkan"
-            "paket-swakelola-terumumkan"
-            "master-satker"
-            "program-master"
-            "struktur-anggaran-pd"
-          )
+          echo "Download Swakelola..."
+          curl -L "ISI_URL_SWAKELOLA" -o data/Legacy_rup_paket-swakelola-terumumkan_2026.json
 
-          for ep in "${endpoints[@]}"; do
+          echo "Download Master Satker..."
+          curl -L "ISI_URL_MASTER_SATKER" -o data/Legacy_rup_master-satker_2026.json
 
-            url="$BASE_URL/$ep?kode_klpd=$KODE&tahun=$TAHUN"
-            filename="data/Legacy_${ep}_${TAHUN}.json"
+          echo "Download Program..."
+          curl -L "ISI_URL_PROGRAM" -o data/Legacy_rup_program-master_2026.json
 
-            echo "Download: $url"
+          echo "Download Struktur..."
+          curl -L "ISI_URL_STRUKTUR" -o data/Legacy_rup_struktur-anggaran-pd_2026.json
 
-            http_code=$(curl -s -w "%{http_code}" \
-              -H "Authorization: Bearer $TOKEN" \
-              "$url" -o response.json)
+      # =========================================
+      # INSTALL PYTHON
+      # =========================================
+      - name: Install Python
+        run: pip install pandas
 
-            if [ "$http_code" != "200" ]; then
-              echo "[]" > $filename
-              continue
-            fi
+      # =========================================
+      # REKAP DATA (INI INTI NYA)
+      # =========================================
+      - name: Generate rekap.json
+        run: |
+          python <<EOF
+import pandas as pd
+import json
+import os
 
-            jq . response.json > $filename 2>/dev/null
+def load_json(path):
+    if not os.path.exists(path):
+        return []
+    with open(path, 'r', encoding='utf-8-sig') as f:
+        try:
+            return json.load(f)
+        except:
+            return []
 
-            if [ $? -ne 0 ]; then
-              echo "[]" > $filename
-            fi
+base = "data"
 
-          done
+df_master   = pd.DataFrame(load_json(f"{base}/Legacy_rup_master-satker_2026.json"))
+df_penyedia = pd.DataFrame(load_json(f"{base}/Legacy_rup_paket-penyedia-terumumkan_2026.json"))
+df_swakelola= pd.DataFrame(load_json(f"{base}/Legacy_rup_paket-swakelola-terumumkan_2026.json"))
+df_program  = pd.DataFrame(load_json(f"{base}/Legacy_rup_program-master_2026.json"))
+df_struktur = pd.DataFrame(load_json(f"{base}/Legacy_rup_struktur-anggaran-pd_2026.json"))
 
-      - name: Commit & Push
+df_master = df_master[df_master['tahun_aktif'].astype(str).str.contains('2026', na=False)]
+
+master_satker = df_master[['kd_satker','nama_satker']].drop_duplicates()
+master_satker.rename(columns={'nama_satker':'Satuan Kerja'}, inplace=True)
+
+rup_penyedia = df_penyedia.groupby('kd_satker', as_index=False)['pagu'].sum()
+rup_penyedia.rename(columns={'pagu':'RUP Penyedia'}, inplace=True)
+
+rup_swakelola = df_swakelola.groupby('kd_satker', as_index=False)['pagu'].sum()
+rup_swakelola.rename(columns={'pagu':'RUP Swakelola'}, inplace=True)
+
+df_program = df_program.drop_duplicates(
+    subset=['kd_satker','nama_program','kd_program_str','kd_program']
+)
+
+df_program = df_program[
+    ~df_program['nama_program'].astype(str).str.strip().str.contains(r'( M$|\(M\)$)', regex=True)
+]
+
+pagu_program = df_program.groupby('kd_satker', as_index=False)['pagu_program'].sum()
+pagu_program.rename(columns={'pagu_program':'Pagu Program'}, inplace=True)
+
+struktur = df_struktur.groupby('kd_satker', as_index=False)[['belanja_pengadaan','belanja_non_pengadaan']].sum()
+struktur.rename(columns={
+    'belanja_pengadaan':'Pagu Pengadaan',
+    'belanja_non_pengadaan':'Belanja Non Pengadaan'
+}, inplace=True)
+
+df = master_satker.merge(pagu_program, on='kd_satker', how='left')
+df = df.merge(rup_penyedia, on='kd_satker', how='left')
+df = df.merge(rup_swakelola, on='kd_satker', how='left')
+df = df.merge(struktur, on='kd_satker', how='left')
+
+for col in ['Pagu Program','RUP Penyedia','RUP Swakelola','Pagu Pengadaan','Belanja Non Pengadaan']:
+    df[col] = df[col].fillna(0)
+
+df['Total RUP Terumumkan'] = df['RUP Penyedia'] + df['RUP Swakelola']
+df['Persentase'] = df.apply(lambda x: round((x['Total RUP Terumumkan']/x['Pagu Program']*100),2) if x['Pagu Program']>0 else 0, axis=1)
+
+df = df[['Satuan Kerja','Pagu Program','RUP Penyedia','RUP Swakelola','Total RUP Terumumkan','Persentase']]
+
+df.to_json(f"{base}/rekap.json", orient="records", indent=2)
+
+print("rekap.json OK")
+EOF
+
+      # =========================================
+      # COMMIT KE GITHUB
+      # =========================================
+      - name: Commit hasil
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/
-          git commit -m "Update data RUP otomatis" || echo "No changes"
+          git add data/*
+          git commit -m "update data otomatis" || echo "no changes"
           git push
