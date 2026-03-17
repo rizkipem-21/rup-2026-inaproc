@@ -1,17 +1,37 @@
 async function loadData() {
     try {
-        const penyedia = await fetch("data/Legacy_paket-penyedia-terumumkan_2026.json").then(r => r.json());
-        const swakelola = await fetch("data/Legacy_paket-swakelola-terumumkan_2026.json").then(r => r.json());
+        const data = await fetch("data/rekap.json").then(r => r.json());
 
-        console.log("Penyedia:", penyedia);
-        console.log("Swakelola:", swakelola);
+        console.log("Rekap:", data);
 
-        document.getElementById("output").innerText =
-            "Penyedia: " + penyedia.length + " data\n" +
-            "Swakelola: " + swakelola.length + " data";
+        const output = document.getElementById("output");
+
+        if (!data || data.length === 0) {
+            output.innerText = "Data kosong";
+            return;
+        }
+
+        let text = "";
+
+        data.forEach(item => {
+            text += `
+Satuan Kerja : ${item["Satuan Kerja"]}
+Pagu Program : ${item["Pagu Program"]}
+RUP Penyedia : ${item["RUP Penyedia"]}
+RUP Swakelola : ${item["RUP Swakelola"]}
+Total RUP : ${item["Total RUP Terumumkan"]}
+Persentase : ${item["Persentase"]}%
+
+----------------------------------------
+`;
+        });
+
+        output.innerText = text;
 
     } catch (error) {
         console.error("Error:", error);
+        document.getElementById("output").innerText =
+            "Gagal load data: " + error;
     }
 }
 
