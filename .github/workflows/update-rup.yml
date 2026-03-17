@@ -2,8 +2,11 @@ name: Update RUP INAPROC
 
 on:
   schedule:
-    - cron: "0 22 * * *"   # 05:00 WIB
+    - cron: "0 22 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write   # ✅ INI PENTING
 
 jobs:
   download:
@@ -11,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4   # ✅ update versi
+        uses: actions/checkout@v4
 
       - name: Install jq
         run: sudo apt-get install -y jq
@@ -21,7 +24,7 @@ jobs:
 
       - name: Download semua endpoint
         run: |
-          set +e   # ⛔ JANGAN STOP kalau error
+          set +e
 
           TOKEN="inprc7642391c38774272bf57ca25ac1d4544"
           BASE_URL="https://data.inaproc.id/api/legacy/rup"
@@ -41,28 +44,21 @@ jobs:
             url="$BASE_URL/$ep?kode_klpd=$KODE&tahun=$TAHUN"
             filename="data/Legacy_${ep}_${TAHUN}.json"
 
-            echo "==============================="
             echo "Download: $url"
 
-            # curl dengan status code
-            http_code=$(curl -s -w "%{http_code}" -H "Authorization: Bearer $TOKEN" "$url" -o response.json)
-
-            echo "HTTP CODE: $http_code"
+            http_code=$(curl -s -w "%{http_code}" \
+              -H "Authorization: Bearer $TOKEN" \
+              "$url" -o response.json)
 
             if [ "$http_code" != "200" ]; then
-              echo "Gagal → buat file kosong"
               echo "[]" > $filename
               continue
             fi
 
-            # validasi JSON
             jq . response.json > $filename 2>/dev/null
 
             if [ $? -ne 0 ]; then
-              echo "JSON tidak valid → fallback []"
               echo "[]" > $filename
-            else
-              echo "SUKSES simpan $filename"
             fi
 
           done
@@ -72,5 +68,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/
-          git commit -m "Update data RUP otomatis" || echo "Tidak ada perubahan"
+          git commit -m "Update data RUP otomatis" || echo "No changes"
           git push
