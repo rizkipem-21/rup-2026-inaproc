@@ -1,0 +1,10 @@
+{
+  "name": "rup-inaproc",
+  "version": "1.0.0",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": "18"
+  }
+}
