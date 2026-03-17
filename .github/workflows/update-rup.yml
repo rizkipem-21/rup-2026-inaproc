@@ -2,47 +2,52 @@ name: Update RUP Data
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * *'   # 05:00 WIB (UTC+7)
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Prepare folder
+      - name: Prepare Folder
         run: mkdir -p data
 
-      - name: Download Data
-  run: |
-    curl -L -H "Authorization: Bearer inprc7642391c38774272bf57ca25ac1d4544" \
-    "https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026" \
-    -o data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+      - name: Download Data from INAPROC
+        run: |
+          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
+          "https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026" \
+          -o data/Legacy_rup_paket-penyedia-terumumkan_2026.json
 
-    curl -L -H "Authorization: Bearer inprc7642391c38774272bf57ca25ac1d4544" \
-    "https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026" \
-    -o data/Legacy_rup_paket-swakelola-terumumkan_2026.json
+          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
+          "https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026" \
+          -o data/Legacy_rup_paket-swakelola-terumumkan_2026.json
 
-    curl -L -H "Authorization: Bearer inprc7642391c38774272bf57ca25ac1d4544" \
-    "https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026" \
-    -o data/Legacy_rup_master-satker_2026.json
+          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
+          "https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026" \
+          -o data/Legacy_rup_master-satker_2026.json
 
-    curl -L -H "Authorization: Bearer inprc7642391c38774272bf57ca25ac1d4544" \
-    "https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026" \
-    -o data/Legacy_rup_program-master_2026.json
+          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
+          "https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026" \
+          -o data/Legacy_rup_program-master_2026.json
 
-    curl -L -H "Authorization: Bearer inprc7642391c38774272bf57ca25ac1d4544" \
-    "https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026" \
-    -o data/Legacy_rup_struktur-anggaran-pd_2026.json
-    
-      - name: Install Pandas
+          curl -L -H "Authorization: Bearer ${{ secrets.INAPROC_TOKEN }}" \
+          "https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026" \
+          -o data/Legacy_rup_struktur-anggaran-pd_2026.json
+
+      - name: Install Python Dependencies
         run: pip install pandas
 
       - name: Run Python Script
         run: python generate.py
 
-      - name: Commit
+      - name: Commit & Push Data
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
