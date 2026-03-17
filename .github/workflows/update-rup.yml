@@ -8,21 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # =========================
-      # CHECKOUT
-      # =========================
       - name: Checkout
         uses: actions/checkout@v4
 
-      # =========================
-      # BUAT FOLDER
-      # =========================
       - name: Prepare folder
         run: mkdir -p data
 
-      # =========================
-      # DOWNLOAD DATA (WAJIB GANTI URL)
-      # =========================
       - name: Download Data
         run: |
           curl -L "ISI_URL_PENYEDIA" -o data/Legacy_rup_paket-penyedia-terumumkan_2026.json
@@ -31,93 +22,12 @@ jobs:
           curl -L "ISI_URL_PROGRAM" -o data/Legacy_rup_program-master_2026.json
           curl -L "ISI_URL_STRUKTUR" -o data/Legacy_rup_struktur-anggaran-pd_2026.json
 
-      # =========================
-      # INSTALL PANDAS
-      # =========================
       - name: Install Pandas
         run: pip install pandas
 
-      # =========================
-      # PROSES DATA (INLINE PYTHON - AMAN)
-      # =========================
-      - name: Generate rekap.json
-        run: |
-          python - <<EOF
-import pandas as pd
-import json
-import os
+      - name: Run Python Script
+        run: python generate.py
 
-def load_json(path):
-    if not os.path.exists(path):
-        return []
-    with open(path, 'r', encoding='utf-8-sig') as f:
-        try:
-            return json.load(f)
-        except:
-            return []
-
-base = "data"
-
-df_master   = pd.DataFrame(load_json(f"{base}/Legacy_rup_master-satker_2026.json"))
-df_penyedia = pd.DataFrame(load_json(f"{base}/Legacy_rup_paket-penyedia-terumumkan_2026.json"))
-df_swakelola= pd.DataFrame(load_json(f"{base}/Legacy_rup_paket-swakelola-terumumkan_2026.json"))
-df_program  = pd.DataFrame(load_json(f"{base}/Legacy_rup_program-master_2026.json"))
-df_struktur = pd.DataFrame(load_json(f"{base}/Legacy_rup_struktur-anggaran-pd_2026.json"))
-
-df_master = df_master[df_master['tahun_aktif'].astype(str).str.contains('2026', na=False)]
-
-master_satker = df_master[['kd_satker','nama_satker']].drop_duplicates()
-master_satker.rename(columns={'nama_satker':'Satuan Kerja'}, inplace=True)
-
-rup_penyedia = df_penyedia.groupby('kd_satker', as_index=False)['pagu'].sum()
-rup_penyedia.rename(columns={'pagu':'RUP Penyedia'}, inplace=True)
-
-rup_swakelola = df_swakelola.groupby('kd_satker', as_index=False)['pagu'].sum()
-rup_swakelola.rename(columns={'pagu':'RUP Swakelola'}, inplace=True)
-
-df_program = df_program.drop_duplicates(
-    subset=['kd_satker','nama_program','kd_program_str','kd_program']
-)
-
-df_program = df_program[
-    ~df_program['nama_program'].astype(str).str.strip().str.contains(r'( M$|\\(M\\)$)', regex=True)
-]
-
-pagu_program = df_program.groupby('kd_satker', as_index=False)['pagu_program'].sum()
-pagu_program.rename(columns={'pagu_program':'Pagu Program'}, inplace=True)
-
-struktur = df_struktur.groupby('kd_satker', as_index=False)[['belanja_pengadaan','belanja_non_pengadaan']].sum()
-struktur.rename(columns={
-    'belanja_pengadaan':'Pagu Pengadaan',
-    'belanja_non_pengadaan':'Belanja Non Pengadaan'
-}, inplace=True)
-
-df = master_satker.merge(pagu_program, on='kd_satker', how='left')
-df = df.merge(rup_penyedia, on='kd_satker', how='left')
-df = df.merge(rup_swakelola, on='kd_satker', how='left')
-df = df.merge(struktur, on='kd_satker', how='left')
-
-for col in ['Pagu Program','RUP Penyedia','RUP Swakelola','Pagu Pengadaan','Belanja Non Pengadaan']:
-    df[col] = df[col].fillna(0)
-
-df['Total RUP Terumumkan'] = df['RUP Penyedia'] + df['RUP Swakelola']
-
-df['Persentase'] = df.apply(
-    lambda x: round((x['Total RUP Terumumkan']/x['Pagu Program']*100),2)
-    if x['Pagu Program'] > 0 else 0,
-    axis=1
-)
-
-df = df[['Satuan Kerja','Pagu Program','RUP Penyedia','RUP Swakelola','Total RUP Terumumkan','Persentase']]
-
-df.to_json(f"{base}/rekap.json", orient="records", indent=2)
-
-print("rekap.json OK")
-EOF
-
-      # =========================
-      # COMMIT
-      # =========================
       - name: Commit
         run: |
           git config user.name "github-actions"
