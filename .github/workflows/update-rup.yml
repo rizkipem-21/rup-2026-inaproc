@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      INAPROC_TOKEN: ${{ secrets.INAPROC_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -34,8 +34,16 @@ jobs:
 
           os.makedirs("data", exist_ok=True)
 
+          TOKEN = os.getenv("INAPROC_TOKEN")
+
+          if not TOKEN:
+              print("TOKEN TIDAK TERBACA!")
+              with open("data/rekap.json", "w") as f:
+                  json.dump([], f)
+              exit()
+
           headers = {
-              "Authorization": "Bearer ${{ secrets.INAPROC_TOKEN }}"
+              "Authorization": f"Bearer {TOKEN}"
           }
 
           urls = {
@@ -52,15 +60,14 @@ jobs:
                   print("STATUS:", r.status_code)
 
                   if r.status_code != 200:
+                      print("RESP:", r.text[:200])
                       return []
 
                   data = r.json()
 
-                  # handle format {"data": [...]}
                   if isinstance(data, dict) and "data" in data:
                       return data["data"]
 
-                  # handle langsung array
                   if isinstance(data, list):
                       return data
 
@@ -74,22 +81,16 @@ jobs:
           swakelola = ambil(urls["swakelola"])
           master = ambil(urls["master"])
 
+          print("Jumlah master:", len(master))
           print("Jumlah penyedia:", len(penyedia))
           print("Jumlah swakelola:", len(swakelola))
-          print("Jumlah master:", len(master))
 
-          # ==========================
-          # VALIDASI DATA
-          # ==========================
           if len(master) == 0:
               print("MASTER KOSONG -> STOP")
               with open("data/rekap.json", "w") as f:
                   json.dump([], f)
               exit()
 
-          # ==========================
-          # REKAP
-          # ==========================
           rekap = {}
 
           for row in master:
@@ -115,13 +116,10 @@ jobs:
 
           hasil = list(rekap.values())
 
-          # ==========================
-          # SIMPAN
-          # ==========================
           with open("data/rekap.json", "w", encoding="utf-8") as f:
               json.dump(hasil, f, indent=2, ensure_ascii=False)
 
-          print("rekap.json berhasil dibuat:", len(hasil), "baris")
+          print("rekap.json berhasil dibuat:", len(hasil))
           EOF
 
       - name: Commit & Push
