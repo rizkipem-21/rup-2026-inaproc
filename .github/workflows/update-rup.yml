@@ -2,24 +2,31 @@ name: Update RUP Data
 
 on:
   schedule:
-    - cron: "0 22 * * *"  # 05:00 WIB
+    - cron: "0 22 * * *"   # Jam 05:00 WIB
   workflow_dispatch:
 
 jobs:
-  download:
+  update-data:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # =========================================
+      # AMBIL REPO
+      # =========================================
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       # =========================================
-      # DOWNLOAD DATA (CURL)
+      # BUAT FOLDER DATA
       # =========================================
-      - name: Download JSON
-        run: |
-          mkdir -p data
+      - name: Create data folder
+        run: mkdir -p data
 
+      # =========================================
+      # DOWNLOAD DATA (GANTI URL NYA)
+      # =========================================
+      - name: Download JSON Data
+        run: |
           echo "Download Penyedia..."
           curl -L "ISI_URL_PENYEDIA" -o data/Legacy_rup_paket-penyedia-terumumkan_2026.json
 
@@ -36,17 +43,17 @@ jobs:
           curl -L "ISI_URL_STRUKTUR" -o data/Legacy_rup_struktur-anggaran-pd_2026.json
 
       # =========================================
-      # INSTALL PYTHON
+      # INSTALL PYTHON + PANDAS
       # =========================================
-      - name: Install Python
+      - name: Install dependencies
         run: pip install pandas
 
       # =========================================
-      # REKAP DATA (INI INTI NYA)
+      # BUAT SCRIPT PYTHON
       # =========================================
-      - name: Generate rekap.json
+      - name: Generate Python Script
         run: |
-          python <<EOF
+          cat << 'EOF' > generate.py
 import pandas as pd
 import json
 import os
@@ -68,17 +75,21 @@ df_swakelola= pd.DataFrame(load_json(f"{base}/Legacy_rup_paket-swakelola-terumum
 df_program  = pd.DataFrame(load_json(f"{base}/Legacy_rup_program-master_2026.json"))
 df_struktur = pd.DataFrame(load_json(f"{base}/Legacy_rup_struktur-anggaran-pd_2026.json"))
 
+# FILTER MASTER
 df_master = df_master[df_master['tahun_aktif'].astype(str).str.contains('2026', na=False)]
 
 master_satker = df_master[['kd_satker','nama_satker']].drop_duplicates()
 master_satker.rename(columns={'nama_satker':'Satuan Kerja'}, inplace=True)
 
+# PENYEDIA
 rup_penyedia = df_penyedia.groupby('kd_satker', as_index=False)['pagu'].sum()
 rup_penyedia.rename(columns={'pagu':'RUP Penyedia'}, inplace=True)
 
+# SWAKELOLA
 rup_swakelola = df_swakelola.groupby('kd_satker', as_index=False)['pagu'].sum()
 rup_swakelola.rename(columns={'pagu':'RUP Swakelola'}, inplace=True)
 
+# PROGRAM
 df_program = df_program.drop_duplicates(
     subset=['kd_satker','nama_program','kd_program_str','kd_program']
 )
@@ -90,34 +101,62 @@ df_program = df_program[
 pagu_program = df_program.groupby('kd_satker', as_index=False)['pagu_program'].sum()
 pagu_program.rename(columns={'pagu_program':'Pagu Program'}, inplace=True)
 
+# STRUKTUR
 struktur = df_struktur.groupby('kd_satker', as_index=False)[['belanja_pengadaan','belanja_non_pengadaan']].sum()
 struktur.rename(columns={
     'belanja_pengadaan':'Pagu Pengadaan',
     'belanja_non_pengadaan':'Belanja Non Pengadaan'
 }, inplace=True)
 
+# MERGE
 df = master_satker.merge(pagu_program, on='kd_satker', how='left')
 df = df.merge(rup_penyedia, on='kd_satker', how='left')
 df = df.merge(rup_swakelola, on='kd_satker', how='left')
 df = df.merge(struktur, on='kd_satker', how='left')
 
+# ISI NULL
 for col in ['Pagu Program','RUP Penyedia','RUP Swakelola','Pagu Pengadaan','Belanja Non Pengadaan']:
     df[col] = df[col].fillna(0)
 
+# HITUNG
 df['Total RUP Terumumkan'] = df['RUP Penyedia'] + df['RUP Swakelola']
-df['Persentase'] = df.apply(lambda x: round((x['Total RUP Terumumkan']/x['Pagu Program']*100),2) if x['Pagu Program']>0 else 0, axis=1)
 
-df = df[['Satuan Kerja','Pagu Program','RUP Penyedia','RUP Swakelola','Total RUP Terumumkan','Persentase']]
+df['Persentase'] = df.apply(
+    lambda x: round((x['Total RUP Terumumkan']/x['Pagu Program']*100),2)
+    if x['Pagu Program'] > 0 else 0,
+    axis=1
+)
 
+# PILIH KOLOM
+df = df[[
+    'Satuan Kerja',
+    'Pagu Program',
+    'RUP Penyedia',
+    'RUP Swakelola',
+    'Total RUP Terumumkan',
+    'Persentase'
+]]
+
+# SORT
+df['_sort'] = df['Satuan Kerja'].str.lower()
+df = df.sort_values('_sort').drop(columns='_sort')
+
+# SIMPAN JSON
 df.to_json(f"{base}/rekap.json", orient="records", indent=2)
 
 print("rekap.json OK")
 EOF
 
       # =========================================
-      # COMMIT KE GITHUB
+      # JALANKAN PYTHON
       # =========================================
-      - name: Commit hasil
+      - name: Run Python Script
+        run: python generate.py
+
+      # =========================================
+      # COMMIT HASIL KE GITHUB
+      # =========================================
+      - name: Commit & Push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
