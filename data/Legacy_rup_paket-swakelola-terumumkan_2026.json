@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿[
     {
         "jenis_klpd":  "KABUPATEN",
@@ -375,35 +374,6 @@
         "tipe_swakelola":  2,
         "uraian_pekerjaan":  "Biaya Registrasi Anggota Sertifikasi; ",
         "username_ppk":  "************176",
-        "volume_pekerjaan":  "1 Paket"
-    },
-    {
-        "jenis_klpd":  "KABUPATEN",
-        "kd_klpd":  "D228",
-        "kd_klpd_penyelenggara":  null,
-        "kd_rup":  42722762,
-        "kd_rup_lokal":  null,
-        "kd_satker":  318421,
-        "kd_satker_str":  "1.02.0.00.0.00.01.0007",
-        "nama_klpd":  "Kab. Kotawaringin Barat",
-        "nama_klpd_penyelenggara":  null,
-        "nama_paket":  "Belanja Penambah Daya Tahan Tubuh",
-        "nama_ppk":  "d*. P*** R*****",
-        "nama_satker":  "Puskesmas Natai Pelingkau",
-        "nama_satker_penyelenggara":  null,
-        "nip_ppk":  "***************003",
-        "pagu":  194634000,
-        "status_aktif_rup":  true,
-        "status_delete_rup":  false,
-        "status_umumkan_rup":  "Terumumkan",
-        "tahun_anggaran":  2026,
-        "tgl_akhir_pelaksanaan_kontrak":  "2026-12-01",
-        "tgl_awal_pelaksanaan_kontrak":  "2026-01-01",
-        "tgl_buat_paket":  "2026-03-25T00:00:00Z",
-        "tgl_pengumuman_paket":  "2026-03-25T09:51:53.433Z",
-        "tipe_swakelola":  4,
-        "uraian_pekerjaan":  "Satuan Biaya Makanan Penambah Daya Tahan Tubuh; Satuan Biaya Makanan Penambah Daya Tahan Tubuh; ",
-        "username_ppk":  "*********************176",
         "volume_pekerjaan":  "1 Paket"
     },
     {
@@ -1449,8 +1419,34 @@
         "uraian_pekerjaan":  "Pembersihan Drainase/Parit Lingkungan RT di Kelurahan Kumai Hulu",
         "username_ppk":  "**************402",
         "volume_pekerjaan":  "29,53910253"
+    },
+    {
+        "jenis_klpd":  "KABUPATEN",
+        "kd_klpd":  "D228",
+        "kd_klpd_penyelenggara":  null,
+        "kd_rup":  43238055,
+        "kd_rup_lokal":  null,
+        "kd_satker":  318421,
+        "kd_satker_str":  "1.02.0.00.0.00.01.0007",
+        "nama_klpd":  "Kab. Kotawaringin Barat",
+        "nama_klpd_penyelenggara":  null,
+        "nama_paket":  "Belanja Penambah Daya Tahan Tubuh",
+        "nama_ppk":  "d*. P*** R*****",
+        "nama_satker":  "Puskesmas Natai Pelingkau",
+        "nama_satker_penyelenggara":  null,
+        "nip_ppk":  "***************003",
+        "pagu":  194600000,
+        "status_aktif_rup":  true,
+        "status_delete_rup":  false,
+        "status_umumkan_rup":  "Terumumkan",
+        "tahun_anggaran":  2026,
+        "tgl_akhir_pelaksanaan_kontrak":  "2026-12-01",
+        "tgl_awal_pelaksanaan_kontrak":  "2026-01-01",
+        "tgl_buat_paket":  "2026-03-26T00:00:00Z",
+        "tgl_pengumuman_paket":  "2026-03-26T10:09:30.953Z",
+        "tipe_swakelola":  4,
+        "uraian_pekerjaan":  "Satuan Biaya Makanan Penambah Daya Tahan Tubuh; Satuan Biaya Makanan Penambah Daya Tahan Tubuh; ",
+        "username_ppk":  "*********************176",
+        "volume_pekerjaan":  "1 Paket"
     }
 ]
-=======
-<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;padding-left:1.5rem;max-width:60rem}@media (width <= 720px){.main-content{margin-top:4rem}}#challenge-error-text{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+");background-repeat:no-repeat;background-size:contain;padding-left:34px}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt = {cvId: '3',cZone: 'data.inaproc.id',cType: 'managed',cRay: '9dd9f965f877df10',cH: '1J8uTqGttFg97e77vGf6JNo1UUGgHZ_xdk4Smt_J6Qs-1773729291-1.2.1.1-UnewGwflWSxSYEwogAwvGEjS6NbfBsC_muZhfCoER1lKWXBjElvijhMXqBilBvsV',cUPMDTk:"\/api\/legacy\/rup\/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&__cf_chl_tk=J9Y6XUvb6WaPrd9dVyTZ370E0PaGR0lB_epCFiPYDSw-1773729291-1.0.1.1-dmSbpgKMfpnO7mc748X.MeOWx1H4hGfExVq5knurkis",cFPWv: 'g',cITimeS: '1773729291',cTplC:0,cTplO:0,cTplV:5,cTplB: '0',fa:"\/api\/legacy\/rup\/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&__cf_chl_f_tk=J9Y6XUvb6WaPrd9dVyTZ370E0PaGR0lB_epCFiPYDSw-1773729291-1.0.1.1-dmSbpgKMfpnO7mc748X.MeOWx1H4hGfExVq5knurkis",md: 'YX7hcDTCtexCYFaJXgHtNlY2I2u0eTgNjX2z5lx1Qb0-1773729291-1.2.1.1-YyCfV6_qKgb6A4j3_vXa171MFu6OXULHymeQckohPnk540bEf2sudYHebThwIGE1IEksiCAGzkdjNUL_nPf1Rvc2TnKrgNZvc6PkeKRP4sx7vFkDcLdj4shIfOf45ceGvi5wFcZLlN59dTyrNzr7GYbeHziDO1uclgKh1kgDv0U_G8K.s1HIOim47811gbsa_a4M2Q6cUzIwksRaXCLz8ZLtYr0UEPGZYt5j8zaUZ8GOqnqbhWszeb06etJ46Ti_Xm2meYx2arg0ELR.oZbzxe8RX5CFQyezURsxwzozQYwEuetMh13MZ5DbD6RxR.AFgGcptIzNIcWvQuKJXPQxI1a.YRO4K336sxw5dz2QFM6wu.xSAiqtxICKyRocFePzqg_Wq5fprzgw762UE2GMB0FgvtAgflE8DTwKj4.RdMO3bhjbpga9KKb8PLehKOGwrgBnc4v4c00x3f9JUiP3gh12EluIpmj.mvAbu0FepJ7YEtF0ePHFV_XWLdzPsVEmO5fgJSRg_YlK8wkpUG_y99whNBq.QLcvmasIGbNTNyQnHe8f4AeifAAj71S7SF_sFnna2nAJVspFa5w2Ff9gNrCDzATVhhL59ulrRL7NFhtdyvo_rArqps260LW9M6OAnoRSHeU4PKm5g5vFGYoDOLSdHb4vY4LPtHxAEvFju.AX7J9YqGtW5Fn8n59wBl1p26jjpBcHHQncD6XcTLNo0DYvHZcxKbCIiWLLYaAUMXoYuttCKWU2XsUM_iRIlaJOUQxSDkwsTK4_6F6BbT24dtnCgcQXjEmM5wvT.QEV4QrIOlA4iu2h2EVi.4Gkny5XXMROAPdRsEmGYT7mxfDTWV5338AGCfYsFmnNfc08Gr3kTd_putDUsS4TxdaIJp3bcebwFCYh9Aq0dzodz69XXyy888Odr3nXdB_xBodySEDOfjAkos1v1Tjw3M58XjVzblKRkEYpSYOJksOIkZGoF0ll_xuJ_e4rKFolqvtm3wmRsuzYUCrElEFM1xaUkcubshIY2Y_R5YC16WBkofyfxNWiGG1KCUWt3v8xyQZ9mUE',mdrd: 'tsK9Nb6mIcgnBxZhDbN3qMzSefJ.dKj9h18QoOrzN94-1773729291-1.2.1.1-CYq8b7PuOChBdqv.CuQX1ilhbkSzCRgH47ewQSB.4A9sCW88M6DaessYlADr6pJ2la4UDSkqq4Wc.a47TSRmUQ6qxObOg49uG_kCMAvsUgKsXAgpMnieoY1xW4jM9HShpxbTuDd6W45vWkAhT0Cywk9Fe5zZqybSm.T6vGWA6B1OdGVwraw3zx1x.NyDRstrBDMNvmoGNNrIUQ9_O8PjPV_7TTeXelSmslB2_rdpEnwhjQnEhMfaFtRjgS.HXzllguC.6wjUQp9IKv_JmToPJKRmasHRwXDcR7bmGs5ue5_YBRHSKsEWa2K3lYKpaCXSXq3rbo_DarPYtuPSyfUSSxsW8uACLU3eWpc9a3O_N8iMtHcNfpPvbdRaT_9YsHI_7XVqzmAwpOT.Cyzzwtd2YKOaQwtsIoHI1FOFhdk4pgADmF97Kq_.SefNsefEBdG.F_8lzXJzwKmdPlaqtT0YZKJUT9PvaeD7RFU7H9jgtkEJyHnonXIiVRcJnw3KzNV3lZSHrBUgK1m0G9WV54DCoMJwlgUXMQnVVThaLvEVGgqW_wNRDSZ1JeiYMbSuuZY.auOujqv8as6M49EQy0ViaUvAEmNZbqP7O3a4JTHIz0astjRDfhAegZ1.778gxbOXmeH4yo6m.O3uxPybSPEG.Vjb0Hw01BAc6RFsFwxtpxyH.4bap6PeyAdpT4PE7NKD9JFo0B2kvOtPqa2RQt3L3GuKaWjaD0.6rnK4449CNFixxhEtPiLjta833Pf.mblh4xi3m9189_CRwc0VweUokeqzPCNsmmjSHF81NJJn.t1qcpHy5LlbeAk399xlGzX.TkFUMRRL8z4aaciSKbht5QIzWzJIGsFIIkVkaFpSksAO50EtJ2_DQHWWQaUOrbdrfn5r7krpYFThxcw.G7F2ORSR86u0wvebMPOXodX3Uu1fb_HynHL3DN3ZoeYFJgjAFNChIWYrPKT2zSrDfEIwPaa67mQ_Z.5KUhEThU.QeGi9yNMB3QO7trx6RKIOHQYf7WEQCrufxB6Cnuwh3mIsUbGtUalcYDBdnEfvIZVMxdSCwHGvZk6VMRTVLrYUvLxHViWrY8yuutwhv2ZeVOC6XwCRcpvnuj8MjioqsAn4TPJnmMnrTPOP9F0MjVtYu55199o3rizPW7pAyA0G1iqOSiR0alYlE0pUlp9czyRwVig7bBXXlb3Zz9UHa4BdTImOTvMxpbp1CRegGPMhoCVepYKj0i.nHhOebafKkNCPFlV3cH6i0e26WheoG8VeqTP7IuZVHWos.8X0e.Lbvg6E9ViqrSQd4COrkhm_hvoRk4er5i5Z1tm_JWHbLExWyVQV0Q4lNGCRDbgAVjcXlrB7PzQHG7SKoSSaSv6Y0dtk2uSnPPUTeW4iEvNHOYB0rIaTewTkdegvmHIkJhY0SZd2oteN9c49nNMEMk_Qwt95IlzttzKycblbJtjyRTktcr5IYxlGXwDrEn6tZxMy967VAVx.s4sPAs2U6bwcyHxT_ijrHfEbzhWkB2yFKFKdZLpOpP7gY.8RZsuOUjxP97cTNgvzX5ZP.N9g26svbqLvz4mYU5iFjluG88lE79QMFkhiEffO1AhKklkcHKCGyB9xtKAPFr7Ek3xeX0okhpRkaDDBJ8OM20fJ7VVzwH5Ky2z1FYdXxZbW.9czYAbkqjkR_Xtt6SFj_kce9FxHRstqV9HguJ9UB6P0_AwlvBVGnkTsanNKvS_fJ.7Gh0DIXSvMEEjA8OS_ZQhB5amEvaR8hIOnQXQeV2NZgQc2SCK13FmZk.WVbgXEbYK6I9_y6W6IZfAQn3guN7oNB6KetiLHy_XoED8lytI4KtdbsLn1DttCowhkWXUcqIsr_pv_X_A0gmjd._Ou3fk.dW572QFizySNDPQRSBaeoHFZQGOMvU2YlbyHl8Tay4BMzWHQTlQllWE7fS4.80CntnCct9HX3M.BdkabPMOF_2XPKOmfqVr.0_vzINnOIkAnzmQPM7UGLj2KSuXejTpTiqBSKuX8PgE.WAqBrJWmep2hl7Dy7umQffUNPJWr.JZSHlOsDrr3guPd.ce0xnIzUokGK4ZcAfkXrlUFK7HC1mnnzKstQEACKEd9loGKxQeMIqAkEe3.WAWnO0YJfxXRpJk.a7PthxCUIlfm_t_I8IzrbncQ49dPja8OdES7MzxLbx0O76W9nhlQruBf02X1XH.RgGZnOGBJR5Tw43EstAJf1_lT7Wx5IhCEZNb6bJEooXj6Qjj7WkRG0E.1ntv1X7mpBvp8amxFtSUemBgWI7ifXQXF.vVeGnCM61ZBkrBAJ74OB6zwAJ.Z0qlN0bizI6LjLfxkDJcpaB_zGRgFPeHdfxRG6iS39UdT9syvUo.7jHLGFwRkTLYvNC62yvtZB4g.RzjkFeM73DgyKoSSwjKPN1d04sHpZH1dEbSjSxJIzHjXFjcxY_G4mzplmN47AyH5varm6SLt5gp3OAKx4h3PhfvZkXsmt.qzAb7j8H61WGdTd.aMuuhSzBhaHcX7Na3UTlxTugkQ2bfbbasXKIDGC8gV9IlZnUaYKAQmITM4uyEKkAUQgo.eeQmibu1J0jbX0eT1P1vQ6nxpwaHcyJwXLLI.bQr9Or9UmloXy5EQkV25YHtvZ4y7nW7FmlgrotyP4kPM5v8DCgo_32_eUrceaLjnSAv4TTluXMjpIW5Rf.I46oWpHA',};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=9dd9f965f877df10';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,"\/api\/legacy\/rup\/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026&__cf_chl_rt_tk=J9Y6XUvb6WaPrd9dVyTZ370E0PaGR0lB_epCFiPYDSw-1773729291-1.0.1.1-dmSbpgKMfpnO7mc748X.MeOWx1H4hGfExVq5knurkis"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>
->>>>>>> ed406adb12208b79bbd8416c0c0d730a4a97e8dc

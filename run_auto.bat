@@ -18,9 +18,9 @@ echo PUSH KE GITHUB
 echo =========================
 
 git add .
-git commit -m "auto update %date% %time%" || echo no changes
-git push
+git commit -m "auto update %date% %time%" || echo tidak ada perubahan
+git push origin main
 
 echo.
 echo SELESAI
-pause
+exit
