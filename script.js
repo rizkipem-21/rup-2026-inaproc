@@ -1,99 +1,121 @@
 let data = [];
 
 // ==============================
-// Load JSON
+// LOAD DATA (WITH DEBUG)
 // ==============================
 async function loadData() {
     try {
-        const res = await fetch('data/rekap.json');
-        if (!res.ok) throw new Error('Gagal load JSON');
-        data = await res.json();
+        console.log("🔄 Mulai fetch data...");
+
+        const url = "data/rekap.json";
+        console.log("📂 URL:", url);
+
+        const res = await fetch(url);
+
+        console.log("📡 Response status:", res.status);
+        console.log("📡 Response ok:", res.ok);
+
+        if (!res.ok) {
+            throw new Error("Gagal fetch JSON. Status: " + res.status);
+        }
+
+        const text = await res.text();
+        console.log("📄 Raw response:", text.substring(0, 200)); // tampilkan 200 karakter awal
+
+        const json = JSON.parse(text);
+        console.log("✅ JSON berhasil di-parse:", json);
+
+        data = json;
+
+        if (!data || data.length === 0) {
+            document.getElementById("tableBody").innerHTML =
+                `<tr><td colspan="6" class="text-center text-red-500 p-4">Data kosong</td></tr>`;
+            return;
+        }
+
         renderTable();
         renderSummary();
         renderChart();
-    } catch (e) {
-        console.error(e);
-        document.getElementById('tableBody').innerHTML = `<tr><td colspan="6" class="text-red-600 p-4">ERROR LOAD DATA</td></tr>`;
+
+    } catch (err) {
+        console.error("❌ ERROR LOAD DATA:", err);
+
+        document.getElementById("tableBody").innerHTML =
+            `<tr><td colspan="6" class="text-center text-red-600 p-4">
+                ERROR LOAD DATA<br><br>${err}
+            </td></tr>`;
     }
 }
 
 // ==============================
-// Render Table
+// RENDER TABLE
 // ==============================
 function renderTable() {
-    const tbody = document.getElementById('tableBody');
-    tbody.innerHTML = data.map(row => `
+    const tbody = document.getElementById("tableBody");
+
+    tbody.innerHTML = data.map(r => `
         <tr class="border-b">
-            <td class="px-4 py-2">${row['Satuan Kerja']}</td>
-            <td class="px-4 py-2 text-right">${formatRupiah(row['Pagu Program'])}</td>
-            <td class="px-4 py-2 text-right">${formatRupiah(row['RUP Penyedia'])}</td>
-            <td class="px-4 py-2 text-right">${formatRupiah(row['RUP Swakelola'])}</td>
-            <td class="px-4 py-2 text-right">${formatRupiah(row['Total RUP Terumumkan'])}</td>
-            <td class="px-4 py-2 text-right">${row['Persentase']}%</td>
+            <td class="px-4 py-2">${r["Satuan Kerja"] || "-"}</td>
+            <td class="px-4 py-2 text-right">${formatRupiah(r["Pagu Program"])}</td>
+            <td class="px-4 py-2 text-right">${formatRupiah(r["RUP Penyedia"])}</td>
+            <td class="px-4 py-2 text-right">${formatRupiah(r["RUP Swakelola"])}</td>
+            <td class="px-4 py-2 text-right">${formatRupiah(r["Total RUP Terumumkan"])}</td>
+            <td class="px-4 py-2 text-right">${r["Persentase"] || 0}%</td>
         </tr>
-    `).join('');
+    `).join("");
 }
 
 // ==============================
-// Render Summary
+// SUMMARY
 // ==============================
 function renderSummary() {
-    const summary = document.getElementById('summary');
     const totalSatker = data.length;
-    const totalRUP = data.reduce((a,b) => a + (b['Total RUP Terumumkan']||0),0);
-    const avgPercent = (data.reduce((a,b) => a + (b['Persentase']||0),0)/totalSatker).toFixed(1);
-    summary.innerHTML = `
-        <div class="bg-white p-4 rounded shadow">Total Satker: ${totalSatker}</div>
-        <div class="bg-white p-4 rounded shadow">Total RUP: ${formatRupiah(totalRUP)}</div>
-        <div class="bg-white p-4 rounded shadow">Rata-rata %: ${avgPercent}%</div>
+    const totalRUP = data.reduce((a,b)=>a+(b["Total RUP Terumumkan"]||0),0);
+
+    document.getElementById("summary").innerHTML = `
+        <div class="bg-white p-4 shadow rounded">Total Satker: ${totalSatker}</div>
+        <div class="bg-white p-4 shadow rounded">Total RUP: ${formatRupiah(totalRUP)}</div>
     `;
 }
 
 // ==============================
-// Chart.js
+// CHART
 // ==============================
 function renderChart() {
-    const ctx = document.getElementById('chartRUP').getContext('2d');
+    const ctx = document.getElementById("chartRUP");
+
     new Chart(ctx, {
-        type: 'bar',
+        type: "bar",
         data: {
-            labels: data.map(d=>d['Satuan Kerja']),
-            datasets: [
-                {
-                    label: 'Total RUP',
-                    data: data.map(d=>d['Total RUP Terumumkan']),
-                    backgroundColor: 'rgba(59, 130, 246, 0.7)'
-                }
-            ]
-        },
-        options: { responsive: true, plugins:{legend:{display:true}} }
+            labels: data.map(d => d["Satuan Kerja"]),
+            datasets: [{
+                label: "Total RUP",
+                data: data.map(d => d["Total RUP Terumumkan"]),
+            }]
+        }
     });
 }
 
 // ==============================
-// Export Excel
-// ==============================
-function exportExcel() {
-    const ws = XLSX.utils.json_to_sheet(data);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "RUP 2026");
-    XLSX.writeFile(wb, `RUP_2026.xlsx`);
-}
-
-// ==============================
-// Helper
+// FORMAT RUPIAH
 // ==============================
 function formatRupiah(val) {
-    if (!val) return 'Rp 0';
-    return new Intl.NumberFormat('id-ID', {style:'currency', currency:'IDR', minimumFractionDigits:0}).format(val);
+    if (!val) return "Rp 0";
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0
+    }).format(val);
 }
 
 // ==============================
-// Refresh
+// REFRESH
 // ==============================
-function refreshData() { loadData(); }
+function refreshData() {
+    loadData();
+}
 
 // ==============================
-// Init
+// INIT
 // ==============================
 loadData();
