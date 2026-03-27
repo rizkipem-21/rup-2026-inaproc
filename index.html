@@ -9,220 +9,228 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <style>
-.filter-popup {
+body { font-family: Arial, sans-serif; }
+th { cursor: pointer; position: relative; }
+.filter-box {
     position: absolute;
+    top: 100%;
+    left: 0;
     background: white;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     padding: 10px;
-    z-index: 999;
-    width: 250px;
-    max-height: 300px;
+    z-index: 10;
+    max-height: 250px;
     overflow: auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: none;
 }
 </style>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 p-6">
 
-<div class="max-w-7xl mx-auto p-6">
-
-<h1 class="text-3xl font-bold mb-6 text-center">
+<h1 class="text-2xl font-bold mb-4">
 Rekapitulasi RUP Kabupaten Kotawaringin Barat Tahun 2026
 </h1>
 
-<div class="flex justify-between mb-4">
-<input id="searchInput" placeholder="Cari..." class="px-4 py-2 border rounded w-1/2">
-<button onclick="exportExcel()" class="bg-green-600 text-white px-4 py-2 rounded">
+<!-- TOTAL -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4" id="summary"></div>
+
+<!-- BUTTON -->
+<button onclick="downloadExcel()" class="mb-4 bg-green-600 text-white px-4 py-2 rounded">
 Download Excel
 </button>
-</div>
 
-<!-- SUMMARY -->
-<div id="summary" class="bg-white p-4 rounded-xl shadow mb-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm"></div>
-
-<div class="bg-white rounded-xl shadow overflow-x-auto relative">
-<table class="w-full text-sm">
-<thead class="bg-blue-600 text-white">
+<!-- TABLE -->
+<div class="overflow-auto bg-white rounded shadow">
+<table class="min-w-full text-sm text-left border" id="table">
+<thead class="bg-gray-200">
 <tr id="headerRow"></tr>
 </thead>
-<tbody id="tableBody"></tbody>
+<tbody id="body"></tbody>
 </table>
 </div>
 
-</div>
-
 <script>
-let data = [];
+let rawData = [];
 let filteredData = [];
 let filters = {};
 
-// FORMAT
-function rupiah(x){
-return new Intl.NumberFormat('id-ID',{
-style:'currency',
-currency:'IDR',
-minimumFractionDigits:0
-}).format(x||0);
+// FORMAT RUPIAH
+function rupiah(n){
+    return "Rp " + Number(n || 0).toLocaleString("id-ID");
 }
 
 // LOAD DATA
 async function loadData(){
-const res = await fetch("data/rekap.json");
-data = await res.json();
-filteredData = [...data];
+    const res = await fetch("data/rekap.json");
+    rawData = await res.json();
 
-renderHeader();
-renderTable();
+    // HITUNG ULANG RUMUS
+    rawData = rawData.map(row => {
+        const paguPengadaan = Number(row["Pagu Pengadaan"] || 0);
+        const totalRup = Number(row["Total RUP Terumumkan"] || 0);
+
+        const selisih = totalRup - paguPengadaan;
+        const persen = paguPengadaan === 0 ? 0 : (totalRup / paguPengadaan) * 100;
+
+        return {
+            ...row,
+            "Selisih RUP Terumumkan": selisih,
+            "Persentase": persen
+        };
+    });
+
+    filteredData = [...rawData];
+
+    renderHeader();
+    renderTable();
+    renderSummary();
 }
 
-// HEADER
+// HEADER + FILTER EXCEL STYLE
 function renderHeader(){
-const header = document.getElementById("headerRow");
-header.innerHTML = "";
+    const header = document.getElementById("headerRow");
+    header.innerHTML = "";
 
-Object.keys(data[0]).forEach(col=>{
-header.innerHTML += `
-<th class="p-3 cursor-pointer relative" onclick="openFilter(event,'${col}')">
-${col} ⏷
-</th>`;
-});
+    Object.keys(rawData[0]).forEach(col => {
+        const th = document.createElement("th");
+        th.className = "px-4 py-2 border";
+
+        th.innerHTML = `
+            ${col} ▼
+            <div class="filter-box" id="filter-${col}"></div>
+        `;
+
+        th.onclick = (e) => {
+            e.stopPropagation();
+            openFilter(col);
+        };
+
+        header.appendChild(th);
+    });
 }
 
 // OPEN FILTER
-function openFilter(e,col){
-closeAll();
+function openFilter(column){
+    document.querySelectorAll(".filter-box").forEach(el => el.style.display = "none");
 
-const values = [...new Set(data.map(d=>d[col]))];
+    const box = document.getElementById("filter-"+column);
+    box.style.display = "block";
 
-const div = document.createElement("div");
-div.className = "filter-popup";
-div.id = "popup";
+    const values = [...new Set(rawData.map(d => d[column]))];
 
-div.innerHTML = `
-<input type="text" placeholder="Search..." onkeyup="searchFilter(this,'${col}')"
-class="border p-1 w-full mb-2">
-
-<label><input type="checkbox" checked onchange="toggleAll('${col}',this)"> Select All</label><br>
-
-<div id="list-${col}">
-${values.map(v=>`
-<label><input type="checkbox" value="${v}" checked> ${v}</label><br>
-`).join("")}
-</div>
-
-<button onclick="applyFilter('${col}')" class="bg-blue-600 text-white px-2 py-1 mt-2 w-full">
-Apply
-</button>
-`;
-
-document.body.appendChild(div);
-div.style.left = e.pageX + "px";
-div.style.top = e.pageY + "px";
-}
-
-// CLOSE FILTER
-function closeAll(){
-const old = document.getElementById("popup");
-if(old) old.remove();
-}
-
-// SEARCH FILTER
-function searchFilter(input,col){
-const val = input.value.toLowerCase();
-
-document.querySelectorAll(`#list-${col} label`).forEach(l=>{
-l.style.display = l.innerText.toLowerCase().includes(val) ? "" : "none";
-});
+    box.innerHTML = `
+        <label><input type="checkbox" onclick="toggleAll('${column}', this)" checked> Select All</label><br>
+        ${values.map(v => `
+            <label>
+                <input type="checkbox" value="${v}" checked onchange="applyFilter('${column}')"> ${v}
+            </label><br>
+        `).join("")}
+        <button onclick="applyFilter('${column}')" class="mt-2 bg-blue-500 text-white px-2 py-1 rounded">OK</button>
+    `;
 }
 
 // SELECT ALL
-function toggleAll(col,el){
-document.querySelectorAll(`#list-${col} input`)
-.forEach(cb=>cb.checked = el.checked);
+function toggleAll(column, el){
+    const box = document.getElementById("filter-"+column);
+    box.querySelectorAll("input[type=checkbox]").forEach(cb => {
+        if(cb !== el) cb.checked = el.checked;
+    });
 }
 
-// APPLY FILTER
-function applyFilter(col){
-const checked = [...document.querySelectorAll(`#list-${col} input:checked`)]
-.map(cb=>cb.value);
+// APPLY FILTER (TIDAK REALTIME)
+function applyFilter(column){
+    const box = document.getElementById("filter-"+column);
+    const checked = [...box.querySelectorAll("input[type=checkbox]:checked")]
+        .map(cb => cb.value);
 
-filters[col] = checked;
+    filters[column] = checked;
 
-filteredData = data.filter(row=>{
-return Object.keys(filters).every(c=>{
-return filters[c].includes(String(row[c]));
-});
-});
+    filteredData = rawData.filter(row => {
+        return Object.keys(filters).every(col => {
+            if(!filters[col] || filters[col].length === 0) return true;
+            return filters[col].includes(String(row[col]));
+        });
+    });
 
-renderTable();
-closeAll();
+    box.style.display = "none";
+
+    renderTable();
+    renderSummary();
 }
 
-// SEARCH GLOBAL
-document.getElementById("searchInput").addEventListener("input",e=>{
-const val = e.target.value.toLowerCase();
-
-filteredData = data.filter(row=>{
-return Object.values(row).some(v=>String(v).toLowerCase().includes(val));
-});
-
-renderTable();
-});
-
-// RENDER TABLE + SUMMARY
+// RENDER TABLE
 function renderTable(){
+    const body = document.getElementById("body");
+    body.innerHTML = "";
 
-// TOTAL
-const totalPaguProgram = filteredData.reduce((a,b)=>a+(b["Pagu Program"]||0),0);
-const totalPaguPengadaan = filteredData.reduce((a,b)=>a+(b["Pagu Pengadaan"]||0),0);
-const totalRup = filteredData.reduce((a,b)=>a+(b["Total RUP Terumumkan"]||0),0);
+    filteredData.forEach(row => {
+        let tr = "<tr class='border'>";
 
-// PERSEN TOTAL
-const persenTotal = totalPaguPengadaan === 0 ? 0 : (totalRup / totalPaguPengadaan * 100);
+        Object.keys(row).forEach(col => {
+            let val = row[col];
 
-// SUMMARY
-document.getElementById("summary").innerHTML = `
-<div><b>Pagu Program</b><br>${rupiah(totalPaguProgram)}</div>
-<div><b>Pagu Pengadaan</b><br>${rupiah(totalPaguPengadaan)}</div>
-<div><b>Total RUP</b><br>${rupiah(totalRup)}</div>
-<div><b>Persentase</b><br>${persenTotal.toFixed(2)}%</div>
-`;
+            if(col.includes("Pagu") || col.includes("RUP") || col.includes("Selisih")){
+                val = rupiah(val);
+            }
 
-// TABLE (SEMUA DATA)
-document.getElementById("tableBody").innerHTML = filteredData.map(d=>`
-<tr class="border-b hover:bg-gray-50">
-${Object.keys(d).map(k=>{
-if(k.includes("Pagu")||k.includes("RUP"))
-return `<td class="p-2 text-right">${rupiah(d[k])}</td>`;
+            if(col === "Persentase"){
+                val = Number(val).toFixed(2) + "%";
+            }
 
-if(k==="Persentase")
-return `<td class="p-2 text-right">${d[k].toFixed(2)}%</td>`;
+            tr += `<td class="px-4 py-2 border">${val}</td>`;
+        });
 
-return `<td class="p-2">${d[k]}</td>`;
-}).join("")}
-</tr>
-`).join("");
-
+        tr += "</tr>";
+        body.innerHTML += tr;
+    });
 }
 
-// EXPORT
-function exportExcel(){
-const ws = XLSX.utils.json_to_sheet(filteredData);
-const wb = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(wb, ws, "RUP");
-XLSX.writeFile(wb, "Rekap_RUP_2026.xlsx");
+// SUMMARY TOTAL
+function renderSummary(){
+    let totalPaguProgram = 0;
+    let totalPaguPengadaan = 0;
+    let totalRup = 0;
+
+    filteredData.forEach(d => {
+        totalPaguProgram += Number(d["Pagu Program"] || 0);
+        totalPaguPengadaan += Number(d["Pagu Pengadaan"] || 0);
+        totalRup += Number(d["Total RUP Terumumkan"] || 0);
+    });
+
+    const persenTotal = totalPaguPengadaan === 0 ? 0 : (totalRup / totalPaguPengadaan) * 100;
+
+    document.getElementById("summary").innerHTML = `
+        <div class="bg-white p-4 shadow rounded">
+            <b>Total Pagu Program</b><br>${rupiah(totalPaguProgram)}
+        </div>
+        <div class="bg-white p-4 shadow rounded">
+            <b>Total Pagu Pengadaan</b><br>${rupiah(totalPaguPengadaan)}
+        </div>
+        <div class="bg-white p-4 shadow rounded">
+            <b>Total RUP Terumumkan</b><br>${rupiah(totalRup)}
+        </div>
+        <div class="bg-white p-4 shadow rounded">
+            <b>Persentase Total</b><br>${persenTotal.toFixed(2)}%
+        </div>
+    `;
 }
+
+// DOWNLOAD EXCEL
+function downloadExcel(){
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "RUP");
+    XLSX.writeFile(wb, "rekap_rup.xlsx");
+}
+
+// CLOSE FILTER SAAT KLIK LUAR
+document.addEventListener("click", () => {
+    document.querySelectorAll(".filter-box").forEach(el => el.style.display = "none");
+});
 
 // INIT
 loadData();
-
-// CLOSE POPUP CLICK OUTSIDE
-document.addEventListener("click", e=>{
-if(!e.target.closest(".filter-popup") && !e.target.closest("th")){
-closeAll();
-}
-});
 </script>
 
 </body>
