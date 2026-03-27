@@ -1,7 +1,5 @@
 async function loadData() {
     try {
-        console.log("Mulai fetch...");
-
         const response = await fetch("data/rekap.json");
 
         if (!response.ok) {
@@ -14,12 +12,8 @@ async function loadData() {
 
         const output = document.getElementById("output");
 
-        // DEBUG KUNCI
-        console.log("Element output:", output);
-
         if (!output) {
-            alert("ERROR: element #output tidak ditemukan di HTML!");
-            return;
+            throw new Error("Element #output tidak ditemukan di HTML");
         }
 
         if (!data || data.length === 0) {
@@ -27,36 +21,67 @@ async function loadData() {
             return;
         }
 
-        let html = "<table border='1' cellpadding='5' cellspacing='0'>";
-        html += "<tr>";
+        // fungsi format rupiah
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+                maximumFractionDigits: 0
+            }).format(angka);
+        }
 
-        Object.keys(data[0]).forEach(key => {
-            html += `<th>${key}</th>`;
+        // fungsi persen
+        function formatPersen(angka) {
+            return angka.toFixed(2) + "%";
+        }
+
+        let html = `
+        <div style="overflow-x:auto;">
+        <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; width:100%;">
+            <thead style="background:#f2f2f2;">
+                <tr>
+                    <th>No</th>
+                    <th>Satuan Kerja</th>
+                    <th>Pagu Program</th>
+                    <th>Pagu Pengadaan</th>
+                    <th>RUP Penyedia</th>
+                    <th>RUP Swakelola</th>
+                    <th>Total RUP</th>
+                    <th>Selisih</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tbody>
+        `;
+
+        data.forEach((item, index) => {
+            html += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${item["Satuan Kerja"]}</td>
+                <td>${formatRupiah(item["Pagu Program"])}</td>
+                <td>${formatRupiah(item["Pagu Pengadaan"])}</td>
+                <td>${formatRupiah(item["RUP Penyedia"])}</td>
+                <td>${formatRupiah(item["RUP Swakelola"])}</td>
+                <td>${formatRupiah(item["Total RUP Terumumkan"])}</td>
+                <td>${formatRupiah(item["Selisih RUP Terumumkan"])}</td>
+                <td>${formatPersen(item["Persentase"])}</td>
+            </tr>
+            `;
         });
 
-        html += "</tr>";
-
-        data.forEach(item => {
-            html += "<tr>";
-            Object.values(item).forEach(val => {
-                html += `<td>${val}</td>`;
-            });
-            html += "</tr>";
-        });
-
-        html += "</table>";
+        html += `
+            </tbody>
+        </table>
+        </div>
+        `;
 
         output.innerHTML = html;
 
     } catch (error) {
-        console.error("ERROR:", error);
-
-        const output = document.getElementById("output");
-        if (output) {
-            output.innerText = "ERROR LOAD DATA\n" + error;
-        }
+        console.error(error);
+        document.getElementById("output").innerText = "ERROR: " + error;
     }
 }
 
-// PASTIKAN HTML SUDAH LOAD
-window.onload = loadData;
+loadData();
