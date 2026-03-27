@@ -1,77 +1,48 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekap RUP 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekap RUP 2026</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        .table-row-hover:hover { background-color: #f8fafc; }
-    </style>
+<style>
+.table-row-hover:hover { background-color: #f8fafc; }
+.dropdown { display:none; position:absolute; background:white; border:1px solid #ddd; z-index:50; max-height:300px; overflow:auto; }
+.dropdown.show { display:block; }
+</style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+<body class="bg-gray-100">
 
-<div class="bg-white shadow p-4 mb-6">
-    <h1 class="text-2xl font-bold text-blue-600">
-        Rekap RUP 2026
-    </h1>
+<div class="p-4 font-bold text-xl bg-white shadow mb-4">
+    Rekap RUP 2026
 </div>
 
-<div class="max-w-7xl mx-auto px-4">
+<div class="max-w-7xl mx-auto bg-white p-4 rounded shadow">
 
-    <!-- SUMMARY -->
-    <div id="summaryCards" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"></div>
+<table class="w-full text-sm border">
 
-    <!-- TABLE -->
-    <div class="bg-white rounded-xl shadow overflow-x-auto">
-        <table class="w-full text-sm">
-            
-            <thead class="bg-blue-600 text-white">
-                <tr>
-                    <th class="p-3 text-left">Satuan Kerja</th>
-                    <th class="p-3 text-right">Pagu Program</th>
-                    <th class="p-3 text-right">RUP Penyedia</th>
-                    <th class="p-3 text-right">RUP Swakelola</th>
-                    <th class="p-3 text-right">Total RUP</th>
-                    <th class="p-3 text-right">Persentase</th>
-                </tr>
+<thead class="bg-blue-600 text-white">
 
-                <!-- FILTER -->
-                <tr class="bg-gray-100 text-black">
-                    <th class="p-2">
-                        <input id="filterNama" type="text" placeholder="Cari..."
-                            class="w-full p-1 border rounded text-sm">
-                    </th>
-                    <th class="p-2">
-                        <input id="filterPagu" type="number" placeholder="Min"
-                            class="w-full p-1 border rounded text-sm">
-                    </th>
-                    <th class="p-2">
-                        <input id="filterPenyedia" type="number" placeholder="Min"
-                            class="w-full p-1 border rounded text-sm">
-                    </th>
-                    <th class="p-2">
-                        <input id="filterSwakelola" type="number" placeholder="Min"
-                            class="w-full p-1 border rounded text-sm">
-                    </th>
-                    <th class="p-2">
-                        <input id="filterTotal" type="number" placeholder="Min"
-                            class="w-full p-1 border rounded text-sm">
-                    </th>
-                    <th class="p-2">
-                        <input id="filterPersen" type="number" placeholder="Min %"
-                            class="w-full p-1 border rounded text-sm">
-                    </th>
-                </tr>
-            </thead>
+<tr>
+    <th class="p-2 relative cursor-pointer" onclick="toggleDropdown('nama')">
+        Satuan Kerja ⬇
+        <div id="dropdown-nama" class="dropdown p-2 text-black"></div>
+    </th>
+    <th class="p-2 text-right">Pagu Program</th>
+    <th class="p-2 text-right">RUP Penyedia</th>
+    <th class="p-2 text-right">RUP Swakelola</th>
+    <th class="p-2 text-right">Total RUP</th>
+    <th class="p-2 text-right">Persentase</th>
+</tr>
 
-            <tbody id="tableBody"></tbody>
+</thead>
 
-        </table>
-    </div>
+<tbody id="tableBody"></tbody>
+
+</table>
 
 </div>
 

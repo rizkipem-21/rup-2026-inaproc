@@ -1,26 +1,22 @@
 let data = [];
 let filteredData = [];
+let activeFilters = {
+    nama: []
+};
 
-// format angka
+// FORMAT
 function formatRupiah(angka) {
     return new Intl.NumberFormat("id-ID").format(angka || 0);
 }
 
 // LOAD DATA
 async function loadData() {
-    try {
-        const response = await fetch("data/rekap.json");
-        const result = await response.json();
+    const res = await fetch("data/rekap.json");
+    data = await res.json();
+    filteredData = [...data];
 
-        data = result;
-        filteredData = [...data];
-
-        renderTable();
-        renderSummary();
-
-    } catch (error) {
-        console.error("ERROR:", error);
-    }
+    renderTable();
+    createDropdownFilter();
 }
 
 // RENDER TABLE
@@ -29,77 +25,65 @@ function renderTable() {
 
     tbody.innerHTML = filteredData.map(row => `
         <tr class="border-b table-row-hover">
-            <td class="p-3">${row["Satuan Kerja"]}</td>
-            <td class="p-3 text-right">${formatRupiah(row["Pagu Program"])}</td>
-            <td class="p-3 text-right text-green-600">${formatRupiah(row["RUP Penyedia"])}</td>
-            <td class="p-3 text-right text-blue-600">${formatRupiah(row["RUP Swakelola"])}</td>
-            <td class="p-3 text-right font-bold">${formatRupiah(row["Total RUP Terumumkan"])}</td>
-            <td class="p-3 text-right font-bold ${
-                row["Persentase"] >= 90 ? "text-green-600" :
-                row["Persentase"] < 50 ? "text-red-600" :
-                "text-yellow-600"
-            }">${row["Persentase"].toFixed(2)}%</td>
+            <td class="p-2">${row["Satuan Kerja"]}</td>
+            <td class="p-2 text-right">${formatRupiah(row["Pagu Program"])}</td>
+            <td class="p-2 text-right">${formatRupiah(row["RUP Penyedia"])}</td>
+            <td class="p-2 text-right">${formatRupiah(row["RUP Swakelola"])}</td>
+            <td class="p-2 text-right font-bold">${formatRupiah(row["Total RUP Terumumkan"])}</td>
+            <td class="p-2 text-right">${row["Persentase"].toFixed(2)}%</td>
         </tr>
     `).join("");
 }
 
-// SUMMARY
-function renderSummary() {
-    const total = filteredData.length;
+// CREATE DROPDOWN (EXCEL STYLE)
+function createDropdownFilter() {
+    const uniqueNama = [...new Set(data.map(d => d["Satuan Kerja"]))].sort();
 
-    const totalRup = filteredData.reduce((sum, row) =>
-        sum + (row["Total RUP Terumumkan"] || 0), 0);
+    const container = document.getElementById("dropdown-nama");
 
-    const avg = filteredData.reduce((sum, row) =>
-        sum + (row["Persentase"] || 0), 0) / total;
-
-    document.getElementById("summaryCards").innerHTML = `
-        <div class="bg-white p-4 rounded shadow">
-            <p>Total Satker</p>
-            <h2 class="text-xl font-bold">${total}</h2>
-        </div>
-
-        <div class="bg-white p-4 rounded shadow">
-            <p>Total RUP</p>
-            <h2 class="text-xl font-bold">${formatRupiah(totalRup)}</h2>
-        </div>
-
-        <div class="bg-white p-4 rounded shadow">
-            <p>Rata-rata %</p>
-            <h2 class="text-xl font-bold">${avg.toFixed(2)}%</h2>
-        </div>
+    container.innerHTML = `
+        <label class="block border-b pb-1 mb-1">
+            <input type="checkbox" id="selectAllNama" checked> <b>Select All</b>
+        </label>
+        ${uniqueNama.map(nama => `
+            <label class="block">
+                <input type="checkbox" class="namaCheckbox" value="${nama}" checked>
+                ${nama}
+            </label>
+        `).join("")}
     `;
-}
 
-// FILTER LOGIC (SEPERTI EXCEL)
-function applyFilters() {
-    const nama = document.getElementById("filterNama").value.toLowerCase();
-    const pagu = parseFloat(document.getElementById("filterPagu").value) || 0;
-    const penyedia = parseFloat(document.getElementById("filterPenyedia").value) || 0;
-    const swakelola = parseFloat(document.getElementById("filterSwakelola").value) || 0;
-    const total = parseFloat(document.getElementById("filterTotal").value) || 0;
-    const persen = parseFloat(document.getElementById("filterPersen").value) || 0;
-
-    filteredData = data.filter(row => {
-        return (
-            row["Satuan Kerja"].toLowerCase().includes(nama) &&
-            row["Pagu Program"] >= pagu &&
-            row["RUP Penyedia"] >= penyedia &&
-            row["RUP Swakelola"] >= swakelola &&
-            row["Total RUP Terumumkan"] >= total &&
-            row["Persentase"] >= persen
-        );
+    // select all
+    document.getElementById("selectAllNama").addEventListener("change", function() {
+        document.querySelectorAll(".namaCheckbox").forEach(cb => {
+            cb.checked = this.checked;
+        });
+        applyFilter();
     });
 
+    // checkbox change
+    document.querySelectorAll(".namaCheckbox").forEach(cb => {
+        cb.addEventListener("change", applyFilter);
+    });
+}
+
+// APPLY FILTER
+function applyFilter() {
+    const selected = [...document.querySelectorAll(".namaCheckbox:checked")]
+        .map(cb => cb.value);
+
+    filteredData = data.filter(row =>
+        selected.includes(row["Satuan Kerja"])
+    );
+
     renderTable();
-    renderSummary();
+}
+
+// TOGGLE DROPDOWN
+function toggleDropdown(name) {
+    const el = document.getElementById("dropdown-" + name);
+    el.classList.toggle("show");
 }
 
 // INIT
-document.addEventListener("DOMContentLoaded", () => {
-    loadData();
-
-    document.querySelectorAll("thead input").forEach(input => {
-        input.addEventListener("input", applyFilters);
-    });
-});
+loadData();
