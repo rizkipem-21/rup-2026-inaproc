@@ -3,53 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rekap RUP 2026</title>
+<title>Rekapitulasi RUP Kabupaten Kotawaringin Barat Tahun 2026</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <style>
-.table-row-hover:hover { background-color: #f1f5f9; }
+.filter-popup {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 999;
+    width: 250px;
+    max-height: 300px;
+    overflow: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+<body class="bg-gray-100">
 
 <div class="max-w-7xl mx-auto p-6">
 
-<h1 class="text-3xl font-bold mb-6">Rekap RUP 2026</h1>
+<h1 class="text-3xl font-bold mb-6 text-center">
+Rekapitulasi RUP Kabupaten Kotawaringin Barat Tahun 2026
+</h1>
 
-<!-- FILTER -->
-<div class="bg-white p-4 rounded-xl shadow mb-6">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="filterContainer"></div>
-    
-    <button onclick="applyFilter()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded">
-        Terapkan Filter
-    </button>
+<div class="flex justify-between mb-4">
+<input id="searchInput" placeholder="Cari..." class="px-4 py-2 border rounded w-1/2">
+<button onclick="exportExcel()" class="bg-green-600 text-white px-4 py-2 rounded">
+Download Excel
+</button>
 </div>
 
-<!-- SEARCH -->
-<input id="searchInput" type="text" placeholder="Cari..."
-class="mb-4 px-4 py-2 border rounded w-full">
-
-<!-- TABLE -->
-<div class="bg-white rounded-xl shadow overflow-x-auto">
-<table class="w-full">
+<div class="bg-white rounded-xl shadow overflow-x-auto relative">
+<table class="w-full text-sm">
 <thead class="bg-blue-600 text-white">
-<tr>
-<th class="p-3 text-left">Satuan Kerja</th>
-<th class="p-3 text-right">Pagu Program</th>
-<th class="p-3 text-right">RUP Penyedia</th>
-<th class="p-3 text-right">RUP Swakelola</th>
-<th class="p-3 text-right">Total RUP</th>
-<th class="p-3 text-right">%</th>
-</tr>
+<tr id="headerRow"></tr>
 </thead>
 <tbody id="tableBody"></tbody>
 </table>
 </div>
 
-<!-- PAGINATION -->
 <div class="flex justify-between mt-4" id="pagination"></div>
 
 </div>
@@ -57,153 +54,172 @@ class="mb-4 px-4 py-2 border rounded w-full">
 <script>
 let data = [];
 let filteredData = [];
-let activeFilters = {};
+let filters = {};
 let currentPage = 1;
 const perPage = 15;
 
-// FORMAT RUPIAH
+// FORMAT
 function rupiah(x){
-    return new Intl.NumberFormat('id-ID',{
-        style:'currency',
-        currency:'IDR',
-        minimumFractionDigits:0
-    }).format(x || 0);
+return new Intl.NumberFormat('id-ID',{
+style:'currency', currency:'IDR', minimumFractionDigits:0
+}).format(x||0);
 }
 
-// LOAD DATA
+// LOAD
 async function loadData(){
-    const res = await fetch("data/rekap.json");
-    data = await res.json();
-    filteredData = [...data];
+const res = await fetch("data/rekap.json");
+data = await res.json();
+filteredData = [...data];
 
-    generateFilters();
-    renderTable();
+renderHeader();
+renderTable();
 }
 
-// GENERATE FILTER EXCEL STYLE
-function generateFilters(){
-    const container = document.getElementById("filterContainer");
-    container.innerHTML = "";
+// HEADER + FILTER ICON
+function renderHeader(){
+const header = document.getElementById("headerRow");
+header.innerHTML = "";
 
-    const columns = Object.keys(data[0]);
+Object.keys(data[0]).forEach(col=>{
+header.innerHTML += `
+<th class="p-3 cursor-pointer relative" onclick="openFilter(event,'${col}')">
+${col} ⏷
+</th>`;
+});
+}
 
-    columns.forEach(col=>{
-        const values = [...new Set(data.map(d=>d[col]))];
+// OPEN FILTER POPUP
+function openFilter(e,col){
+closeAll();
 
-        const div = document.createElement("div");
-        div.className = "border p-2 rounded bg-gray-50 max-h-48 overflow-auto";
+const values = [...new Set(data.map(d=>d[col]))];
 
-        let html = `<b>${col}</b><br>
-        <label><input type="checkbox" checked onchange="toggleAll('${col}',this)"> Select All</label><br>`;
+const div = document.createElement("div");
+div.className = "filter-popup";
+div.id = "popup";
 
-        values.forEach(v=>{
-            html += `<label>
-            <input type="checkbox" value="${v}" data-col="${col}" checked> ${v}
-            </label><br>`;
-        });
+div.innerHTML = `
+<input type="text" placeholder="Search..." onkeyup="searchFilter(this,'${col}')"
+class="border p-1 w-full mb-2">
 
-        div.innerHTML = html;
-        container.appendChild(div);
-    });
+<label><input type="checkbox" checked onchange="toggleAll('${col}',this)"> Select All</label><br>
+
+<div id="list-${col}">
+${values.map(v=>`
+<label><input type="checkbox" value="${v}" checked> ${v}</label><br>
+`).join("")}
+</div>
+
+<button onclick="applyFilter('${col}')" class="bg-blue-600 text-white px-2 py-1 mt-2 w-full">
+Apply
+</button>
+`;
+
+document.body.appendChild(div);
+
+// posisi popup
+div.style.left = e.pageX + "px";
+div.style.top = e.pageY + "px";
+}
+
+// CLOSE POPUP
+function closeAll(){
+const old = document.getElementById("popup");
+if(old) old.remove();
+}
+
+// SEARCH DI FILTER
+function searchFilter(input,col){
+const val = input.value.toLowerCase();
+
+document.querySelectorAll(`#list-${col} label`).forEach(l=>{
+l.style.display = l.innerText.toLowerCase().includes(val) ? "" : "none";
+});
 }
 
 // SELECT ALL
 function toggleAll(col,el){
-    document.querySelectorAll(`input[data-col='${col}']`)
-    .forEach(cb=>cb.checked = el.checked);
+document.querySelectorAll(`#list-${col} input`)
+.forEach(cb=>cb.checked = el.checked);
 }
 
-// APPLY FILTER (TIDAK REALTIME)
-function applyFilter(){
-    activeFilters = {};
+// APPLY FILTER
+function applyFilter(col){
+const checked = [...document.querySelectorAll(`#list-${col} input:checked`)]
+.map(cb=>cb.value);
 
-    document.querySelectorAll("[data-col]").forEach(cb=>{
-        if(cb.checked){
-            const col = cb.dataset.col;
-            if(!activeFilters[col]) activeFilters[col]=[];
-            activeFilters[col].push(cb.value);
-        }
-    });
+filters[col] = checked;
 
-    filteredData = data.filter(row=>{
-        return Object.keys(activeFilters).every(col=>{
-            return activeFilters[col].includes(String(row[col]));
-        });
-    });
-
-    currentPage = 1;
-    renderTable();
-}
-
-// SEARCH
-document.getElementById("searchInput").addEventListener("input", e=>{
-    const val = e.target.value.toLowerCase();
-
-    filteredData = data.filter(row=>{
-        return Object.values(row).some(v =>
-            String(v).toLowerCase().includes(val)
-        );
-    });
-
-    currentPage=1;
-    renderTable();
+filteredData = data.filter(row=>{
+return Object.keys(filters).every(c=>{
+return filters[c].includes(String(row[c]));
+});
 });
 
-// RENDER TABLE
+currentPage = 1;
+renderTable();
+closeAll();
+}
+
+// SEARCH GLOBAL
+document.getElementById("searchInput").addEventListener("input",e=>{
+const val = e.target.value.toLowerCase();
+
+filteredData = data.filter(row=>{
+return Object.values(row).some(v=>String(v).toLowerCase().includes(val));
+});
+
+renderTable();
+});
+
+// TABLE
 function renderTable(){
-    const start = (currentPage-1)*perPage;
-    const pageData = filteredData.slice(start,start+perPage);
+const start = (currentPage-1)*perPage;
+const pageData = filteredData.slice(start,start+perPage);
 
-    document.getElementById("tableBody").innerHTML = pageData.map(d=>`
-    <tr class="table-row-hover border-b">
-        <td class="p-2">${d["Satuan Kerja"]}</td>
-        <td class="p-2 text-right">${rupiah(d["Pagu Program"])}</td>
-        <td class="p-2 text-right">${rupiah(d["RUP Penyedia"])}</td>
-        <td class="p-2 text-right">${rupiah(d["RUP Swakelola"])}</td>
-        <td class="p-2 text-right font-bold">${rupiah(d["Total RUP Terumumkan"])}</td>
-        <td class="p-2 text-right">${d["Persentase"].toFixed(2)}%</td>
-    </tr>
-    `).join("");
+document.getElementById("tableBody").innerHTML = pageData.map(d=>`
+<tr class="border-b hover:bg-gray-50">
+${Object.keys(d).map(k=>{
+if(k.includes("Pagu")||k.includes("RUP")) return `<td class="p-2 text-right">${rupiah(d[k])}</td>`;
+if(k==="Persentase") return `<td class="p-2 text-right">${d[k].toFixed(2)}%</td>`;
+return `<td class="p-2">${d[k]}</td>`;
+}).join("")}
+</tr>
+`).join("");
 
-    renderPagination();
+renderPagination();
 }
 
 // PAGINATION
 function renderPagination(){
-    const totalPage = Math.ceil(filteredData.length/perPage);
+const totalPage = Math.ceil(filteredData.length/perPage);
 
-    document.getElementById("pagination").innerHTML = `
-    <div>Page ${currentPage} / ${totalPage}</div>
-    <div>
-        <button onclick="prev()">Prev</button>
-        <button onclick="next()">Next</button>
-    </div>`;
+document.getElementById("pagination").innerHTML = `
+<div>Page ${currentPage}/${totalPage}</div>
+<div>
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+</div>`;
 }
 
-function prev(){
-    if(currentPage>1){
-        currentPage--;
-        renderTable();
-    }
-}
+function prev(){ if(currentPage>1){currentPage--;renderTable();}}
+function next(){ if(currentPage<Math.ceil(filteredData.length/perPage)){currentPage++;renderTable();}}
 
-function next(){
-    if(currentPage<Math.ceil(filteredData.length/perPage)){
-        currentPage++;
-        renderTable();
-    }
-}
-
-// EXPORT EXCEL
+// EXPORT
 function exportExcel(){
-    const ws = XLSX.utils.json_to_sheet(filteredData);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "RUP");
-    XLSX.writeFile(wb, "RUP.xlsx");
+const ws = XLSX.utils.json_to_sheet(filteredData);
+const wb = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb, ws, "RUP");
+XLSX.writeFile(wb, "Rekap_RUP_2026.xlsx");
 }
 
 // INIT
 loadData();
+document.addEventListener("click", e=>{
+if(!e.target.closest(".filter-popup") && !e.target.closest("th")){
+closeAll();
+}
+});
 </script>
 
 </body>
