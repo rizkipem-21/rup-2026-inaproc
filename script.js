@@ -7,7 +7,7 @@ async function loadData() {
     try {
         console.log("🔄 Mulai fetch data...");
 
-        const url = "data/rekap.json";
+        const url = "./data/rekap.json";
         console.log("📂 URL:", url);
 
         const res = await fetch(url);
