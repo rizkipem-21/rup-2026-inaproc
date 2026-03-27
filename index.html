@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rekap RUP 2026</title>
 
-    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Style tambahan -->
     <style>
         .table-row-hover:hover { background-color: #f8fafc; }
     </style>
@@ -16,7 +14,6 @@
 
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
 
-<!-- HEADER -->
 <div class="bg-white shadow p-4 mb-6">
     <h1 class="text-2xl font-bold text-blue-600">
         Rekap RUP 2026
@@ -28,17 +25,10 @@
     <!-- SUMMARY -->
     <div id="summaryCards" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"></div>
 
-    <!-- SEARCH -->
-    <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="Cari Satuan Kerja..." 
-        class="w-full p-3 mb-6 border rounded-lg"
-    >
-
     <!-- TABLE -->
     <div class="bg-white rounded-xl shadow overflow-x-auto">
         <table class="w-full text-sm">
+            
             <thead class="bg-blue-600 text-white">
                 <tr>
                     <th class="p-3 text-left">Satuan Kerja</th>
@@ -48,8 +38,38 @@
                     <th class="p-3 text-right">Total RUP</th>
                     <th class="p-3 text-right">Persentase</th>
                 </tr>
+
+                <!-- FILTER -->
+                <tr class="bg-gray-100 text-black">
+                    <th class="p-2">
+                        <input id="filterNama" type="text" placeholder="Cari..."
+                            class="w-full p-1 border rounded text-sm">
+                    </th>
+                    <th class="p-2">
+                        <input id="filterPagu" type="number" placeholder="Min"
+                            class="w-full p-1 border rounded text-sm">
+                    </th>
+                    <th class="p-2">
+                        <input id="filterPenyedia" type="number" placeholder="Min"
+                            class="w-full p-1 border rounded text-sm">
+                    </th>
+                    <th class="p-2">
+                        <input id="filterSwakelola" type="number" placeholder="Min"
+                            class="w-full p-1 border rounded text-sm">
+                    </th>
+                    <th class="p-2">
+                        <input id="filterTotal" type="number" placeholder="Min"
+                            class="w-full p-1 border rounded text-sm">
+                    </th>
+                    <th class="p-2">
+                        <input id="filterPersen" type="number" placeholder="Min %"
+                            class="w-full p-1 border rounded text-sm">
+                    </th>
+                </tr>
             </thead>
+
             <tbody id="tableBody"></tbody>
+
         </table>
     </div>
 

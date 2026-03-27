@@ -1,12 +1,12 @@
 let data = [];
 let filteredData = [];
 
-// format rupiah
+// format angka
 function formatRupiah(angka) {
     return new Intl.NumberFormat("id-ID").format(angka || 0);
 }
 
-// load JSON lokal
+// LOAD DATA
 async function loadData() {
     try {
         const response = await fetch("data/rekap.json");
@@ -23,7 +23,7 @@ async function loadData() {
     }
 }
 
-// render tabel
+// RENDER TABLE
 function renderTable() {
     const tbody = document.getElementById("tableBody");
 
@@ -34,19 +34,23 @@ function renderTable() {
             <td class="p-3 text-right text-green-600">${formatRupiah(row["RUP Penyedia"])}</td>
             <td class="p-3 text-right text-blue-600">${formatRupiah(row["RUP Swakelola"])}</td>
             <td class="p-3 text-right font-bold">${formatRupiah(row["Total RUP Terumumkan"])}</td>
-            <td class="p-3 text-right font-bold">${row["Persentase"].toFixed(2)}%</td>
+            <td class="p-3 text-right font-bold ${
+                row["Persentase"] >= 90 ? "text-green-600" :
+                row["Persentase"] < 50 ? "text-red-600" :
+                "text-yellow-600"
+            }">${row["Persentase"].toFixed(2)}%</td>
         </tr>
     `).join("");
 }
 
-// render summary
+// SUMMARY
 function renderSummary() {
     const total = filteredData.length;
 
-    const totalRup = filteredData.reduce((sum, row) => 
+    const totalRup = filteredData.reduce((sum, row) =>
         sum + (row["Total RUP Terumumkan"] || 0), 0);
 
-    const avg = filteredData.reduce((sum, row) => 
+    const avg = filteredData.reduce((sum, row) =>
         sum + (row["Persentase"] || 0), 0) / total;
 
     document.getElementById("summaryCards").innerHTML = `
@@ -67,18 +71,35 @@ function renderSummary() {
     `;
 }
 
-// search
+// FILTER LOGIC (SEPERTI EXCEL)
+function applyFilters() {
+    const nama = document.getElementById("filterNama").value.toLowerCase();
+    const pagu = parseFloat(document.getElementById("filterPagu").value) || 0;
+    const penyedia = parseFloat(document.getElementById("filterPenyedia").value) || 0;
+    const swakelola = parseFloat(document.getElementById("filterSwakelola").value) || 0;
+    const total = parseFloat(document.getElementById("filterTotal").value) || 0;
+    const persen = parseFloat(document.getElementById("filterPersen").value) || 0;
+
+    filteredData = data.filter(row => {
+        return (
+            row["Satuan Kerja"].toLowerCase().includes(nama) &&
+            row["Pagu Program"] >= pagu &&
+            row["RUP Penyedia"] >= penyedia &&
+            row["RUP Swakelola"] >= swakelola &&
+            row["Total RUP Terumumkan"] >= total &&
+            row["Persentase"] >= persen
+        );
+    });
+
+    renderTable();
+    renderSummary();
+}
+
+// INIT
 document.addEventListener("DOMContentLoaded", () => {
     loadData();
 
-    document.getElementById("searchInput").addEventListener("input", function(e) {
-        const keyword = e.target.value.toLowerCase();
-
-        filteredData = data.filter(row =>
-            row["Satuan Kerja"].toLowerCase().includes(keyword)
-        );
-
-        renderTable();
-        renderSummary();
+    document.querySelectorAll("thead input").forEach(input => {
+        input.addEventListener("input", applyFilters);
     });
 });
