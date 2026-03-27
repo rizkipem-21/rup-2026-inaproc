@@ -38,6 +38,9 @@ Download Excel
 </button>
 </div>
 
+<!-- SUMMARY -->
+<div id="summary" class="bg-white p-4 rounded-xl shadow mb-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm"></div>
+
 <div class="bg-white rounded-xl shadow overflow-x-auto relative">
 <table class="w-full text-sm">
 <thead class="bg-blue-600 text-white">
@@ -47,25 +50,23 @@ Download Excel
 </table>
 </div>
 
-<div class="flex justify-between mt-4" id="pagination"></div>
-
 </div>
 
 <script>
 let data = [];
 let filteredData = [];
 let filters = {};
-let currentPage = 1;
-const perPage = 15;
 
 // FORMAT
 function rupiah(x){
 return new Intl.NumberFormat('id-ID',{
-style:'currency', currency:'IDR', minimumFractionDigits:0
+style:'currency',
+currency:'IDR',
+minimumFractionDigits:0
 }).format(x||0);
 }
 
-// LOAD
+// LOAD DATA
 async function loadData(){
 const res = await fetch("data/rekap.json");
 data = await res.json();
@@ -75,7 +76,7 @@ renderHeader();
 renderTable();
 }
 
-// HEADER + FILTER ICON
+// HEADER
 function renderHeader(){
 const header = document.getElementById("headerRow");
 header.innerHTML = "";
@@ -88,7 +89,7 @@ ${col} ⏷
 });
 }
 
-// OPEN FILTER POPUP
+// OPEN FILTER
 function openFilter(e,col){
 closeAll();
 
@@ -116,19 +117,17 @@ Apply
 `;
 
 document.body.appendChild(div);
-
-// posisi popup
 div.style.left = e.pageX + "px";
 div.style.top = e.pageY + "px";
 }
 
-// CLOSE POPUP
+// CLOSE FILTER
 function closeAll(){
 const old = document.getElementById("popup");
 if(old) old.remove();
 }
 
-// SEARCH DI FILTER
+// SEARCH FILTER
 function searchFilter(input,col){
 const val = input.value.toLowerCase();
 
@@ -156,7 +155,6 @@ return filters[c].includes(String(row[c]));
 });
 });
 
-currentPage = 1;
 renderTable();
 closeAll();
 }
@@ -172,38 +170,41 @@ return Object.values(row).some(v=>String(v).toLowerCase().includes(val));
 renderTable();
 });
 
-// TABLE
+// RENDER TABLE + SUMMARY
 function renderTable(){
-const start = (currentPage-1)*perPage;
-const pageData = filteredData.slice(start,start+perPage);
 
-document.getElementById("tableBody").innerHTML = pageData.map(d=>`
+// TOTAL
+const totalPaguProgram = filteredData.reduce((a,b)=>a+(b["Pagu Program"]||0),0);
+const totalPaguPengadaan = filteredData.reduce((a,b)=>a+(b["Pagu Pengadaan"]||0),0);
+const totalRup = filteredData.reduce((a,b)=>a+(b["Total RUP Terumumkan"]||0),0);
+
+// PERSEN TOTAL
+const persenTotal = totalPaguPengadaan === 0 ? 0 : (totalRup / totalPaguPengadaan * 100);
+
+// SUMMARY
+document.getElementById("summary").innerHTML = `
+<div><b>Pagu Program</b><br>${rupiah(totalPaguProgram)}</div>
+<div><b>Pagu Pengadaan</b><br>${rupiah(totalPaguPengadaan)}</div>
+<div><b>Total RUP</b><br>${rupiah(totalRup)}</div>
+<div><b>Persentase</b><br>${persenTotal.toFixed(2)}%</div>
+`;
+
+// TABLE (SEMUA DATA)
+document.getElementById("tableBody").innerHTML = filteredData.map(d=>`
 <tr class="border-b hover:bg-gray-50">
 ${Object.keys(d).map(k=>{
-if(k.includes("Pagu")||k.includes("RUP")) return `<td class="p-2 text-right">${rupiah(d[k])}</td>`;
-if(k==="Persentase") return `<td class="p-2 text-right">${d[k].toFixed(2)}%</td>`;
+if(k.includes("Pagu")||k.includes("RUP"))
+return `<td class="p-2 text-right">${rupiah(d[k])}</td>`;
+
+if(k==="Persentase")
+return `<td class="p-2 text-right">${d[k].toFixed(2)}%</td>`;
+
 return `<td class="p-2">${d[k]}</td>`;
 }).join("")}
 </tr>
 `).join("");
 
-renderPagination();
 }
-
-// PAGINATION
-function renderPagination(){
-const totalPage = Math.ceil(filteredData.length/perPage);
-
-document.getElementById("pagination").innerHTML = `
-<div>Page ${currentPage}/${totalPage}</div>
-<div>
-<button onclick="prev()">Prev</button>
-<button onclick="next()">Next</button>
-</div>`;
-}
-
-function prev(){ if(currentPage>1){currentPage--;renderTable();}}
-function next(){ if(currentPage<Math.ceil(filteredData.length/perPage)){currentPage++;renderTable();}}
 
 // EXPORT
 function exportExcel(){
@@ -215,6 +216,8 @@ XLSX.writeFile(wb, "Rekap_RUP_2026.xlsx");
 
 // INIT
 loadData();
+
+// CLOSE POPUP CLICK OUTSIDE
 document.addEventListener("click", e=>{
 if(!e.target.closest(".filter-popup") && !e.target.closest("th")){
 closeAll();
