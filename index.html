@@ -8,36 +8,49 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-.table-row-hover:hover { background-color: #f8fafc; }
-.dropdown { display:none; position:absolute; background:white; border:1px solid #ddd; z-index:50; max-height:300px; overflow:auto; }
+.table-row-hover:hover { background-color:#f1f5f9; }
+.dropdown { display:none; position:absolute; background:white; border:1px solid #ddd; z-index:50; width:260px; max-height:350px; overflow:auto; }
 .dropdown.show { display:block; }
 </style>
 </head>
 
 <body class="bg-gray-100">
 
-<div class="p-4 font-bold text-xl bg-white shadow mb-4">
+<div class="p-4 bg-white shadow text-xl font-bold">
     Rekap RUP 2026
 </div>
 
-<div class="max-w-7xl mx-auto bg-white p-4 rounded shadow">
+<div class="max-w-7xl mx-auto mt-4 bg-white p-4 rounded shadow">
 
 <table class="w-full text-sm border">
 
 <thead class="bg-blue-600 text-white">
-
 <tr>
     <th class="p-2 relative cursor-pointer" onclick="toggleDropdown('nama')">
-        Satuan Kerja ⬇
+        Satuan Kerja ⬍
         <div id="dropdown-nama" class="dropdown p-2 text-black"></div>
     </th>
-    <th class="p-2 text-right">Pagu Program</th>
-    <th class="p-2 text-right">RUP Penyedia</th>
-    <th class="p-2 text-right">RUP Swakelola</th>
-    <th class="p-2 text-right">Total RUP</th>
-    <th class="p-2 text-right">Persentase</th>
-</tr>
 
+    <th class="p-2 text-right cursor-pointer" onclick="sortData('Pagu Program')">
+        Pagu Program ⬍
+    </th>
+
+    <th class="p-2 text-right cursor-pointer" onclick="sortData('RUP Penyedia')">
+        RUP Penyedia ⬍
+    </th>
+
+    <th class="p-2 text-right cursor-pointer" onclick="sortData('RUP Swakelola')">
+        RUP Swakelola ⬍
+    </th>
+
+    <th class="p-2 text-right cursor-pointer" onclick="sortData('Total RUP Terumumkan')">
+        Total RUP ⬍
+    </th>
+
+    <th class="p-2 text-right cursor-pointer" onclick="sortData('Persentase')">
+        Persentase ⬍
+    </th>
+</tr>
 </thead>
 
 <tbody id="tableBody"></tbody>

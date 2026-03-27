@@ -1,25 +1,25 @@
 let data = [];
 let filteredData = [];
-let activeFilters = {
-    nama: []
-};
+let tempSelected = [];
+let activeFilter = [];
+let sortState = { key: null, asc: true };
 
 // FORMAT
 function formatRupiah(angka) {
     return new Intl.NumberFormat("id-ID").format(angka || 0);
 }
 
-// LOAD DATA
+// LOAD
 async function loadData() {
     const res = await fetch("data/rekap.json");
     data = await res.json();
     filteredData = [...data];
 
     renderTable();
-    createDropdownFilter();
+    createDropdown();
 }
 
-// RENDER TABLE
+// TABLE
 function renderTable() {
     const tbody = document.getElementById("tableBody");
 
@@ -35,54 +35,88 @@ function renderTable() {
     `).join("");
 }
 
-// CREATE DROPDOWN (EXCEL STYLE)
-function createDropdownFilter() {
-    const uniqueNama = [...new Set(data.map(d => d["Satuan Kerja"]))].sort();
+// DROPDOWN
+function createDropdown() {
+    const unique = [...new Set(data.map(d => d["Satuan Kerja"]))].sort();
+    tempSelected = [...unique];
 
-    const container = document.getElementById("dropdown-nama");
+    renderDropdown(unique);
+}
 
-    container.innerHTML = `
+// RENDER DROPDOWN
+function renderDropdown(list) {
+    const el = document.getElementById("dropdown-nama");
+
+    el.innerHTML = `
+        <input id="searchDropdown" placeholder="Cari..." 
+            class="w-full p-1 mb-2 border rounded text-sm">
+
         <label class="block border-b pb-1 mb-1">
-            <input type="checkbox" id="selectAllNama" checked> <b>Select All</b>
+            <input type="checkbox" id="selectAll" checked> <b>Select All</b>
         </label>
-        ${uniqueNama.map(nama => `
+
+        <div id="checkboxList">
+        ${list.map(val => `
             <label class="block">
-                <input type="checkbox" class="namaCheckbox" value="${nama}" checked>
-                ${nama}
+                <input type="checkbox" class="cb" value="${val}" checked> ${val}
             </label>
         `).join("")}
+        </div>
+
+        <button onclick="applyFilter()" 
+            class="mt-2 w-full bg-blue-600 text-white p-1 rounded">
+            Terapkan Filter
+        </button>
     `;
 
-    // select all
-    document.getElementById("selectAllNama").addEventListener("change", function() {
-        document.querySelectorAll(".namaCheckbox").forEach(cb => {
-            cb.checked = this.checked;
-        });
-        applyFilter();
+    // SEARCH
+    document.getElementById("searchDropdown").addEventListener("input", e => {
+        const keyword = e.target.value.toLowerCase();
+        const filtered = list.filter(v => v.toLowerCase().includes(keyword));
+        renderDropdown(filtered);
     });
 
-    // checkbox change
-    document.querySelectorAll(".namaCheckbox").forEach(cb => {
-        cb.addEventListener("change", applyFilter);
+    // SELECT ALL
+    document.getElementById("selectAll").addEventListener("change", function() {
+        document.querySelectorAll(".cb").forEach(cb => cb.checked = this.checked);
     });
 }
 
-// APPLY FILTER
+// APPLY FILTER (TIDAK REALTIME)
 function applyFilter() {
-    const selected = [...document.querySelectorAll(".namaCheckbox:checked")]
+    const selected = [...document.querySelectorAll(".cb:checked")]
         .map(cb => cb.value);
 
+    activeFilter = selected;
+
     filteredData = data.filter(row =>
-        selected.includes(row["Satuan Kerja"])
+        activeFilter.includes(row["Satuan Kerja"])
     );
 
     renderTable();
 }
 
-// TOGGLE DROPDOWN
-function toggleDropdown(name) {
-    const el = document.getElementById("dropdown-" + name);
-    el.classList.toggle("show");
+// SORT
+function sortData(key) {
+    if (sortState.key === key) {
+        sortState.asc = !sortState.asc;
+    } else {
+        sortState.key = key;
+        sortState.asc = true;
+    }
+
+    filteredData.sort((a, b) => {
+        return sortState.asc
+            ? a[key] - b[key]
+            : b[key] - a[key];
+    });
+
+    renderTable();
+}
+
+// TOGGLE
+function toggleDropdown() {
+    document.getElementById("dropdown-nama").classList.toggle("show");
 }
 
 // INIT
