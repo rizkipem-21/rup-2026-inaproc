@@ -6,60 +6,205 @@
 <title>Rekap RUP 2026</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <style>
-.table-row-hover:hover { background-color:#f1f5f9; }
-.dropdown { display:none; position:absolute; background:white; border:1px solid #ddd; z-index:50; width:260px; max-height:350px; overflow:auto; }
-.dropdown.show { display:block; }
+.table-row-hover:hover { background-color: #f1f5f9; }
 </style>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
 
-<div class="p-4 bg-white shadow text-xl font-bold">
-    Rekap RUP 2026
+<div class="max-w-7xl mx-auto p-6">
+
+<h1 class="text-3xl font-bold mb-6">Rekap RUP 2026</h1>
+
+<!-- FILTER -->
+<div class="bg-white p-4 rounded-xl shadow mb-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="filterContainer"></div>
+    
+    <button onclick="applyFilter()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded">
+        Terapkan Filter
+    </button>
 </div>
 
-<div class="max-w-7xl mx-auto mt-4 bg-white p-4 rounded shadow">
+<!-- SEARCH -->
+<input id="searchInput" type="text" placeholder="Cari..."
+class="mb-4 px-4 py-2 border rounded w-full">
 
-<table class="w-full text-sm border">
-
+<!-- TABLE -->
+<div class="bg-white rounded-xl shadow overflow-x-auto">
+<table class="w-full">
 <thead class="bg-blue-600 text-white">
 <tr>
-    <th class="p-2 relative cursor-pointer" onclick="toggleDropdown('nama')">
-        Satuan Kerja ⬍
-        <div id="dropdown-nama" class="dropdown p-2 text-black"></div>
-    </th>
-
-    <th class="p-2 text-right cursor-pointer" onclick="sortData('Pagu Program')">
-        Pagu Program ⬍
-    </th>
-
-    <th class="p-2 text-right cursor-pointer" onclick="sortData('RUP Penyedia')">
-        RUP Penyedia ⬍
-    </th>
-
-    <th class="p-2 text-right cursor-pointer" onclick="sortData('RUP Swakelola')">
-        RUP Swakelola ⬍
-    </th>
-
-    <th class="p-2 text-right cursor-pointer" onclick="sortData('Total RUP Terumumkan')">
-        Total RUP ⬍
-    </th>
-
-    <th class="p-2 text-right cursor-pointer" onclick="sortData('Persentase')">
-        Persentase ⬍
-    </th>
+<th class="p-3 text-left">Satuan Kerja</th>
+<th class="p-3 text-right">Pagu Program</th>
+<th class="p-3 text-right">RUP Penyedia</th>
+<th class="p-3 text-right">RUP Swakelola</th>
+<th class="p-3 text-right">Total RUP</th>
+<th class="p-3 text-right">%</th>
 </tr>
 </thead>
-
 <tbody id="tableBody"></tbody>
-
 </table>
+</div>
+
+<!-- PAGINATION -->
+<div class="flex justify-between mt-4" id="pagination"></div>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+let data = [];
+let filteredData = [];
+let activeFilters = {};
+let currentPage = 1;
+const perPage = 15;
+
+// FORMAT RUPIAH
+function rupiah(x){
+    return new Intl.NumberFormat('id-ID',{
+        style:'currency',
+        currency:'IDR',
+        minimumFractionDigits:0
+    }).format(x || 0);
+}
+
+// LOAD DATA
+async function loadData(){
+    const res = await fetch("data/rekap.json");
+    data = await res.json();
+    filteredData = [...data];
+
+    generateFilters();
+    renderTable();
+}
+
+// GENERATE FILTER EXCEL STYLE
+function generateFilters(){
+    const container = document.getElementById("filterContainer");
+    container.innerHTML = "";
+
+    const columns = Object.keys(data[0]);
+
+    columns.forEach(col=>{
+        const values = [...new Set(data.map(d=>d[col]))];
+
+        const div = document.createElement("div");
+        div.className = "border p-2 rounded bg-gray-50 max-h-48 overflow-auto";
+
+        let html = `<b>${col}</b><br>
+        <label><input type="checkbox" checked onchange="toggleAll('${col}',this)"> Select All</label><br>`;
+
+        values.forEach(v=>{
+            html += `<label>
+            <input type="checkbox" value="${v}" data-col="${col}" checked> ${v}
+            </label><br>`;
+        });
+
+        div.innerHTML = html;
+        container.appendChild(div);
+    });
+}
+
+// SELECT ALL
+function toggleAll(col,el){
+    document.querySelectorAll(`input[data-col='${col}']`)
+    .forEach(cb=>cb.checked = el.checked);
+}
+
+// APPLY FILTER (TIDAK REALTIME)
+function applyFilter(){
+    activeFilters = {};
+
+    document.querySelectorAll("[data-col]").forEach(cb=>{
+        if(cb.checked){
+            const col = cb.dataset.col;
+            if(!activeFilters[col]) activeFilters[col]=[];
+            activeFilters[col].push(cb.value);
+        }
+    });
+
+    filteredData = data.filter(row=>{
+        return Object.keys(activeFilters).every(col=>{
+            return activeFilters[col].includes(String(row[col]));
+        });
+    });
+
+    currentPage = 1;
+    renderTable();
+}
+
+// SEARCH
+document.getElementById("searchInput").addEventListener("input", e=>{
+    const val = e.target.value.toLowerCase();
+
+    filteredData = data.filter(row=>{
+        return Object.values(row).some(v =>
+            String(v).toLowerCase().includes(val)
+        );
+    });
+
+    currentPage=1;
+    renderTable();
+});
+
+// RENDER TABLE
+function renderTable(){
+    const start = (currentPage-1)*perPage;
+    const pageData = filteredData.slice(start,start+perPage);
+
+    document.getElementById("tableBody").innerHTML = pageData.map(d=>`
+    <tr class="table-row-hover border-b">
+        <td class="p-2">${d["Satuan Kerja"]}</td>
+        <td class="p-2 text-right">${rupiah(d["Pagu Program"])}</td>
+        <td class="p-2 text-right">${rupiah(d["RUP Penyedia"])}</td>
+        <td class="p-2 text-right">${rupiah(d["RUP Swakelola"])}</td>
+        <td class="p-2 text-right font-bold">${rupiah(d["Total RUP Terumumkan"])}</td>
+        <td class="p-2 text-right">${d["Persentase"].toFixed(2)}%</td>
+    </tr>
+    `).join("");
+
+    renderPagination();
+}
+
+// PAGINATION
+function renderPagination(){
+    const totalPage = Math.ceil(filteredData.length/perPage);
+
+    document.getElementById("pagination").innerHTML = `
+    <div>Page ${currentPage} / ${totalPage}</div>
+    <div>
+        <button onclick="prev()">Prev</button>
+        <button onclick="next()">Next</button>
+    </div>`;
+}
+
+function prev(){
+    if(currentPage>1){
+        currentPage--;
+        renderTable();
+    }
+}
+
+function next(){
+    if(currentPage<Math.ceil(filteredData.length/perPage)){
+        currentPage++;
+        renderTable();
+    }
+}
+
+// EXPORT EXCEL
+function exportExcel(){
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "RUP");
+    XLSX.writeFile(wb, "RUP.xlsx");
+}
+
+// INIT
+loadData();
+</script>
 
 </body>
 </html>
