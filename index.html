@@ -9,8 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <style>
-body { font-family: Arial, sans-serif; }
-th { cursor: pointer; position: relative; }
+th { cursor: pointer; position: sticky; top: 0; background: #e5e7eb; z-index: 5; }
 .filter-box {
     position: absolute;
     top: 100%;
@@ -41,9 +40,9 @@ Download Excel
 </button>
 
 <!-- TABLE -->
-<div class="overflow-auto bg-white rounded shadow">
+<div class="bg-white rounded shadow max-h-[70vh] overflow-auto">
 <table class="min-w-full text-sm text-left border" id="table">
-<thead class="bg-gray-200">
+<thead>
 <tr id="headerRow"></tr>
 </thead>
 <tbody id="body"></tbody>
@@ -65,18 +64,15 @@ async function loadData(){
     const res = await fetch("data/rekap.json");
     rawData = await res.json();
 
-    // HITUNG ULANG RUMUS
+    // HITUNG ULANG
     rawData = rawData.map(row => {
         const paguPengadaan = Number(row["Pagu Pengadaan"] || 0);
         const totalRup = Number(row["Total RUP Terumumkan"] || 0);
 
-        const selisih = totalRup - paguPengadaan;
-        const persen = paguPengadaan === 0 ? 0 : (totalRup / paguPengadaan) * 100;
-
         return {
             ...row,
-            "Selisih RUP Terumumkan": selisih,
-            "Persentase": persen
+            "Selisih RUP Terumumkan": totalRup - paguPengadaan,
+            "Persentase": paguPengadaan === 0 ? 0 : (totalRup / paguPengadaan) * 100
         };
     });
 
@@ -87,7 +83,7 @@ async function loadData(){
     renderSummary();
 }
 
-// HEADER + FILTER EXCEL STYLE
+// HEADER
 function renderHeader(){
     const header = document.getElementById("headerRow");
     header.innerHTML = "";
@@ -110,7 +106,7 @@ function renderHeader(){
     });
 }
 
-// OPEN FILTER
+// FILTER
 function openFilter(column){
     document.querySelectorAll(".filter-box").forEach(el => el.style.display = "none");
 
@@ -130,7 +126,6 @@ function openFilter(column){
     `;
 }
 
-// SELECT ALL
 function toggleAll(column, el){
     const box = document.getElementById("filter-"+column);
     box.querySelectorAll("input[type=checkbox]").forEach(cb => {
@@ -138,7 +133,6 @@ function toggleAll(column, el){
     });
 }
 
-// APPLY FILTER (TIDAK REALTIME)
 function applyFilter(column){
     const box = document.getElementById("filter-"+column);
     const checked = [...box.querySelectorAll("input[type=checkbox]:checked")]
@@ -159,7 +153,7 @@ function applyFilter(column){
     renderSummary();
 }
 
-// RENDER TABLE
+// TABLE
 function renderTable(){
     const body = document.getElementById("body");
     body.innerHTML = "";
@@ -186,7 +180,7 @@ function renderTable(){
     });
 }
 
-// SUMMARY TOTAL
+// SUMMARY (FIX SESUAI PERMINTAAN)
 function renderSummary(){
     let totalPaguProgram = 0;
     let totalPaguPengadaan = 0;
@@ -216,7 +210,7 @@ function renderSummary(){
     `;
 }
 
-// DOWNLOAD EXCEL
+// DOWNLOAD
 function downloadExcel(){
     const ws = XLSX.utils.json_to_sheet(filteredData);
     const wb = XLSX.utils.book_new();
@@ -224,7 +218,7 @@ function downloadExcel(){
     XLSX.writeFile(wb, "rekap_rup.xlsx");
 }
 
-// CLOSE FILTER SAAT KLIK LUAR
+// CLOSE FILTER
 document.addEventListener("click", () => {
     document.querySelectorAll(".filter-box").forEach(el => el.style.display = "none");
 });
