@@ -14,6 +14,9 @@ echo GIT CONFIG >> log.txt
 git config user.name "rizkipem-21"
 git config user.email "rizki.pem@gmail.com"
 
+echo GIT STATUS >> log.txt
+git status >> log.txt 2>&1
+
 echo GIT ADD >> log.txt
 git add . >> log.txt 2>&1
 
@@ -23,5 +26,7 @@ git commit -m "auto update %date% %time%" >> log.txt 2>&1
 echo GIT PUSH >> log.txt
 git push origin main >> log.txt 2>&1
 
-echo SELESAI %date% %time% >> log.txt
+echo PUSH STATUS: %ERRORLEVEL% >> log.txt
+
 echo ========================= >> log.txt
+echo SELESAI %date% %time% >> log.txt
