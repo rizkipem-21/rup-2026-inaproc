@@ -376,3 +376,27 @@ To add an exception for this directory, call:
 	git config --global --add safe.directory D:/rup-2026-inaproc
 SELESAI 30/03/2026  7:59:45,00 
 ========================= 
+========================= 
+START 30/03/2026 14.34.51,79 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+The system cannot find the path specified.
+GIT CONFIG 
+GIT ADD 
