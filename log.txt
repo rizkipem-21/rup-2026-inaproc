@@ -86,3 +86,293 @@ Traceback (most recent call last):
 UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 2: character maps to <undefined>
  
 PUSH KE GITHUB 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 5f19735] auto update 27/03/2026 15.47.32,25 WIB
+ 3 files changed, 111 insertions(+), 24 deletions(-)
+ create mode 100644 log.txt
+To https://github.com/rizkipem-21/rup-2026-inaproc.git
+   55fd91a..5f19735  main -> main
+ 
+DONE 27/03/2026 15.47.34,79 
+========================= 
+========================= 
+START 28/03/2026  5:00:01,39 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+ 
+GENERATE REKAP 
+'python' is not recognized as an internal or external command,
+operable program or batch file.
+ 
+PUSH KE GITHUB 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+ 
+DONE 28/03/2026  5:00:08,38 
+========================= 
+========================= 
+START 29/03/2026  5:00:01,52 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+ 
+GENERATE REKAP 
+'python' is not recognized as an internal or external command,
+operable program or batch file.
+ 
+PUSH KE GITHUB 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+ 
+DONE 29/03/2026  5:00:09,08 
+========================= 
+========================= 
+START 30/03/2026  5:00:01,53 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+ 
+GENERATE REKAP 
+'python' is not recognized as an internal or external command,
+operable program or batch file.
+ 
+PUSH KE GITHUB 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+ 
+DONE 30/03/2026  5:00:09,03 
+========================= 
+========================= 
+START 30/03/2026  7:53:48,14 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+'python' is not recognized as an internal or external command,
+operable program or batch file.
+GIT ADD 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+GIT COMMIT 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+GIT PULL (SYNC) 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+GIT PUSH 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+SELESAI 30/03/2026  7:53:57,45 
+========================= 
+========================= 
+START 30/03/2026  7:59:41,20 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+'python' is not recognized as an internal or external command,
+operable program or batch file.
+GIT ADD 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+GIT COMMIT 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+GIT PULL (SYNC) 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+GIT PUSH 
+fatal: detected dubious ownership in repository at 'D:/rup-2026-inaproc'
+'D:/rup-2026-inaproc' is owned by:
+	DESKTOP-3DBSMPE/rizki (S-1-5-21-224455813-1946397441-389090965-1001)
+but the current user is:
+	NT AUTHORITY/SYSTEM (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/rup-2026-inaproc
+SELESAI 30/03/2026  7:59:45,00 
+========================= 
