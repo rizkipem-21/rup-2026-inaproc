@@ -400,3 +400,111 @@ GENERATE REKAP
 The system cannot find the path specified.
 GIT CONFIG 
 GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+[main 43139f9] auto update 30/03/2026 14.35.03,88
+ 2 files changed, 41 insertions(+), 36 deletions(-)
+GIT PUSH 
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+SELESAI 30/03/2026 14.35.04,22 
+========================= 
+START 30/03/2026 14:45:12,35 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+Jumlah data:
+MASTER   : 121
+PENYEDIA : 4835
+SWAKELOLA: 50
+PROGRAM  : 247
+STRUKTUR : 58
+Traceback (most recent call last):
+  File "D:\rup-2026-inaproc\generate_rekap.py", line 174, in <module>
+    print("\n\u2705 SELESAI: rekap.json berhasil dibuat!")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rizki\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 2: character maps to <undefined>
+GIT CONFIG 
+GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'SYSTEM@DESKTOP-3DBSMPE.(none)')
+GIT PUSH 
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+SELESAI 30/03/2026 14:45:28,22 
+========================= 
+========================= 
+START 30/03/2026 15:29:52,82 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+Jumlah data:
+MASTER   : 121
+PENYEDIA : 4835
+SWAKELOLA: 50
+PROGRAM  : 247
+STRUKTUR : 58
+
+SELESAI: rekap.json berhasil dibuat!
+GIT CONFIG 
+GIT ADD 

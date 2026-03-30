@@ -171,4 +171,4 @@ with open(output_json, "w", encoding="utf-8") as f:
 with open(base + "last-update.txt", "w") as f:
     f.write(datetime.now().strftime("%d %B %Y %H:%M WIB"))
 
-print("\n✅ SELESAI: rekap.json berhasil dibuat!")
+print("\nSELESAI: rekap.json berhasil dibuat!")
