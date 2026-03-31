@@ -8,7 +8,7 @@ echo DOWNLOAD DATA >> log.txt
 powershell -ExecutionPolicy Bypass -File download.ps1 >> log.txt 2>&1
 
 echo GENERATE REKAP >> log.txt
-"C:\Users\rizki\AppData\Local\Programs\Python\Python314\python.exe" generate_rekap.py >> log.txt 2>&1
+python generate_rekap.py
 
 echo GIT CONFIG >> log.txt
 git config user.name "rizkipem-21"
