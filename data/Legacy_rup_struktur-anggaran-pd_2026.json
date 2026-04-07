@@ -800,15 +800,15 @@
     {
         "belanja_btt":  0,
         "belanja_modal":  0,
-        "belanja_non_pengadaan":  null,
-        "belanja_operasi":  3335718693,
-        "belanja_pengadaan":  3335718693,
+        "belanja_non_pengadaan":  0,
+        "belanja_operasi":  5257374241,
+        "belanja_pengadaan":  5257374241,
         "kd_klpd":  "D228",
         "kd_satker":  318436,
         "kd_satker_str":  "1.02.0.00.0.00.01.0022",
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_satker":  "Instalasi Farmasi",
         "tahun_anggaran":  2026,
-        "total_belanja":  3335718693
+        "total_belanja":  5257374241
     }
 ]
