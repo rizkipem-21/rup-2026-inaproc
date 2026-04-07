@@ -153,11 +153,11 @@
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
     "Pagu Program": 2563298345.0,
     "Pagu Pengadaan": 2187676345.0,
-    "RUP Penyedia": 2187676345.0,
+    "RUP Penyedia": 2195468545.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 2187676345.0,
-    "Selisih RUP Terumumkan": -375622000.0,
-    "Persentase": 85.34614588533196
+    "Total RUP Terumumkan": 2195468545.0,
+    "Selisih RUP Terumumkan": -367829800.0,
+    "Persentase": 85.65013703077157
   },
   {
     "Satuan Kerja": "Dinas Pemberdayaan Masyarakat dan Desa",
@@ -193,11 +193,11 @@
     "Satuan Kerja": "Dinas Pendidikan dan Kebudayaan",
     "Pagu Program": 63843390000.0,
     "Pagu Pengadaan": 61655471600.0,
-    "RUP Penyedia": 9467977800.0,
+    "RUP Penyedia": 9679476800.0,
     "RUP Swakelola": 52187493800.0,
-    "Total RUP Terumumkan": 61655471600.0,
-    "Selisih RUP Terumumkan": -2187918400.0,
-    "Persentase": 96.5729915031141
+    "Total RUP Terumumkan": 61866970600.0,
+    "Selisih RUP Terumumkan": -1976419400.0,
+    "Persentase": 96.90426933782808
   },
   {
     "Satuan Kerja": "Dinas Perhubungan",
@@ -223,11 +223,11 @@
     "Satuan Kerja": "Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah",
     "Pagu Program": 12570398857.0,
     "Pagu Pengadaan": 11668621099.0,
-    "RUP Penyedia": 11668621099.0,
+    "RUP Penyedia": 11854621099.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 11668621099.0,
-    "Selisih RUP Terumumkan": -901777758.0,
-    "Persentase": 92.82618023295393
+    "Total RUP Terumumkan": 11854621099.0,
+    "Selisih RUP Terumumkan": -715777758.0,
+    "Persentase": 94.30584688566657
   },
   {
     "Satuan Kerja": "Dinas Perpustakaan dan Kearsipan",
@@ -291,23 +291,23 @@
   },
   {
     "Satuan Kerja": "Instalasi Farmasi",
-    "Pagu Program": 3357694693.0,
-    "Pagu Pengadaan": 3335718693.0,
-    "RUP Penyedia": 3335718693.0,
+    "Pagu Program": 5257374241.0,
+    "Pagu Pengadaan": 5257374241.0,
+    "RUP Penyedia": 4452819280.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 3335718693.0,
-    "Selisih RUP Terumumkan": -21976000.0,
-    "Persentase": 99.34550332864347
+    "Total RUP Terumumkan": 4452819280.0,
+    "Selisih RUP Terumumkan": -804554961.0,
+    "Persentase": 84.69663896616638
   },
   {
     "Satuan Kerja": "Kecamatan Arut Selatan",
     "Pagu Program": 6754652808.0,
     "Pagu Pengadaan": 4701405808.0,
-    "RUP Penyedia": 4701405808.0,
+    "RUP Penyedia": 4819295743.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 4701405808.0,
-    "Selisih RUP Terumumkan": -2053247000.0,
-    "Persentase": 69.60247908570226
+    "Total RUP Terumumkan": 4819295743.0,
+    "Selisih RUP Terumumkan": -1935357065.0,
+    "Persentase": 71.34779358743911
   },
   {
     "Satuan Kerja": "Kecamatan Arut Utara",
