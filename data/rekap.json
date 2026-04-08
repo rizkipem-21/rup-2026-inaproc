@@ -143,11 +143,11 @@
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Pagu Program": 105714344580.0,
     "Pagu Pengadaan": 105032048100.0,
-    "RUP Penyedia": 104971644196.0,
+    "RUP Penyedia": 104997048100.0,
     "RUP Swakelola": 35000000.0,
-    "Total RUP Terumumkan": 105006644196.0,
-    "Selisih RUP Terumumkan": -707700384.0,
-    "Persentase": 99.33055406358365
+    "Total RUP Terumumkan": 105032048100.0,
+    "Selisih RUP Terumumkan": -682296480.0,
+    "Persentase": 99.35458477020244
   },
   {
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
@@ -293,11 +293,11 @@
     "Satuan Kerja": "Instalasi Farmasi",
     "Pagu Program": 5257374241.0,
     "Pagu Pengadaan": 5257374241.0,
-    "RUP Penyedia": 4247933693.0,
+    "RUP Penyedia": 5056460241.0,
     "RUP Swakelola": 0.0,
-    "Total RUP Terumumkan": 4247933693.0,
-    "Selisih RUP Terumumkan": -1009440548.0,
-    "Persentase": 80.7995303030207
+    "Total RUP Terumumkan": 5056460241.0,
+    "Selisih RUP Terumumkan": -200914000.0,
+    "Persentase": 96.17843450380309
   },
   {
     "Satuan Kerja": "Kecamatan Arut Selatan",
@@ -552,7 +552,7 @@
   {
     "Satuan Kerja": "Puskesmas Arut Selatan",
     "Pagu Program": 2726247892.0,
-    "Pagu Pengadaan": 1742512000.0,
+    "Pagu Pengadaan": 1801912000.0,
     "RUP Penyedia": 1780912000.0,
     "RUP Swakelola": 21000000.0,
     "Total RUP Terumumkan": 1801912000.0,
