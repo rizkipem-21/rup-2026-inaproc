@@ -6628,3 +6628,52 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+[main e23ea20] auto update 09/04/2026  5.00.30,90
+ 5 files changed, 10124 insertions(+), 9584 deletions(-)
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+To https://github.com/rizkipem-21/rup-2026-inaproc.git
+   4094872..e23ea20  main -> main
+PUSH STATUS: 0 
+========================= 
+SELESAI 09/04/2026  5.00.37,70 
+========================= 
+START 10/04/2026  5.00.01,04 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
