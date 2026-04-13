@@ -1,4 +1,4 @@
-@echo off 
+@echo off  
 setlocal enabledelayedexpansion
 cd /d D:\rup-2026-inaproc
 
@@ -10,6 +10,9 @@ powershell -ExecutionPolicy Bypass -File download.ps1 >> log.txt 2>&1
 
 echo GENERATE REKAP >> log.txt
 python generate_rekap.py
+
+echo GENERATE EXCEL >> log.txt
+python generate_excel.py
 
 :: FORMAT TANGGAL
 for /f "tokens=1-3 delims=/ " %%a in ("%date%") do (
@@ -54,6 +57,7 @@ del /f /q .git\index.lock >nul 2>&1
 
 echo GIT ADD >> log.txt
 git add . >> log.txt 2>&1
+git add output/ >> log.txt 2>&1
 
 echo GIT COMMIT >> log.txt
 git commit -m "auto update %date% %time%" >> log.txt 2>&1
