@@ -11,7 +11,7 @@ powershell -ExecutionPolicy Bypass -File download.ps1 >> log.txt 2>&1
 echo GENERATE REKAP >> log.txt
 python generate_rekap.py
 
-:: FORMAT TANGGAL INDONESIA
+:: FORMAT TANGGAL
 for /f "tokens=1-3 delims=/ " %%a in ("%date%") do (
     set dd=%%a
     set mm=%%b
@@ -37,7 +37,6 @@ for /f "tokens=1-2 delims=:." %%a in ("%time%") do (
     set mn=%%b
 )
 
-:: HILANGKAN SPASI DI JAM (BIAR TIDAK " 9")
 set hh=!hh: =!
 
 echo UPDATE LAST-UPDATE >> log.txt
@@ -49,6 +48,9 @@ git config user.email "rizki.pem@gmail.com"
 
 echo GIT STATUS >> log.txt
 git status >> log.txt 2>&1
+
+:: FIX LOCK
+del /f /q .git\index.lock >nul 2>&1
 
 echo GIT ADD >> log.txt
 git add . >> log.txt 2>&1
