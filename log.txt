@@ -7084,3 +7084,1517 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+[main 8d637b6] auto update 10/04/2026 15.00.14,64
+ 2 files changed, 46 insertions(+), 1 deletion(-)
+GIT PUSH 
+To https://github.com/rizkipem-21/rup-2026-inaproc.git
+   d787423..8d637b6  main -> main
+PUSH STATUS: 0 
+========================= 
+SELESAI 10/04/2026 15.00.17,42 
+========================= 
+START 10/04/2026 16.00.00,62 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update.txt
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+========================= 
+START 11/04/2026  5.00.00,63 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  5.00.42,53 
+========================= 
+START 11/04/2026  5.30.00,73 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  5.30.15,94 
+========================= 
+START 11/04/2026  6.00.00,71 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  6.00.12,24 
+========================= 
+START 11/04/2026  6.30.00,78 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  6.30.16,10 
+========================= 
+START 11/04/2026  7.00.00,72 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  7.00.13,17 
+========================= 
+START 11/04/2026  7.30.00,74 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  7.30.16,08 
+========================= 
+START 11/04/2026  8.00.00,72 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  8.00.13,56 
+========================= 
+START 11/04/2026  8.30.00,83 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  8.30.20,41 
+========================= 
+START 11/04/2026  9.00.00,71 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  9.00.12,14 
+========================= 
+START 11/04/2026  9.30.00,71 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026  9.30.16,18 
+========================= 
+START 11/04/2026 10.00.00,72 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 11/04/2026 10.00.11,90 
+========================= 
+START 12/04/2026  5.00.00,79 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  5.00.41,69 
+========================= 
+START 12/04/2026  5.30.01,00 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  5.30.16,24 
+========================= 
+START 12/04/2026  6.00.01,01 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  6.00.12,32 
+========================= 
+START 12/04/2026  6.30.01,05 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  6.30.12,90 
+========================= 
+START 12/04/2026  7.00.01,00 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: unable to access 'https://github.com/rizkipem-21/rup-2026-inaproc.git/': Could not resolve host: github.com
+PUSH STATUS: 128 
+========================= 
+SELESAI 12/04/2026  7.00.11,62 
+========================= 
+START 12/04/2026  7.30.01,00 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  7.30.15,91 
+========================= 
+START 12/04/2026  8.00.01,01 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  8.00.12,42 
+========================= 
+START 12/04/2026  8.30.01,61 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  8.30.46,31 
+========================= 
+START 12/04/2026  9.00.01,10 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  9.00.29,31 
+========================= 
+START 12/04/2026  9.30.01,03 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026  9.30.27,75 
+========================= 
+START 12/04/2026 10.00.01,03 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 12/04/2026 10.00.24,58 
+========================= 
+START 13/04/2026  5.00.01,27 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+Everything up-to-date
+PUSH STATUS: 0 
+========================= 
+SELESAI 13/04/2026  5.00.46,27 
+========================= 
+START 13/04/2026  6.00.01,31 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: unable to access 'https://github.com/rizkipem-21/rup-2026-inaproc.git/': Could not resolve host: github.com
+PUSH STATUS: 128 
+========================= 
+SELESAI 13/04/2026  6.00.16,28 
+========================= 
+START 13/04/2026  7.00.01,32 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/Legacy_rup_program-master_2026.json
+	modified:   data/last-update.txt
+	modified:   data/rekap.json
+	modified:   log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT COMMIT 
+fatal: Unable to create 'D:/rup-2026-inaproc/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+GIT PUSH 
+fatal: unable to access 'https://github.com/rizkipem-21/rup-2026-inaproc.git/': Could not resolve host: github.com
+PUSH STATUS: 128 
+========================= 
+SELESAI 13/04/2026  7.00.25,51 
