@@ -32,15 +32,12 @@ Rekapitulasi RUP Kabupaten Kotawaringin Barat Tahun 2026
 </h1>
 <div class="text-sm text-gray-600 mb-4" id="lastUpdate"></div>
 
-<!-- TOTAL -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4" id="summary"></div>
 
-<!-- BUTTON -->
 <button onclick="downloadExcel()" class="mb-4 bg-green-600 text-white px-4 py-2 rounded">
 Download Excel
 </button>
 
-<!-- TABLE -->
 <div class="bg-white rounded shadow max-h-[70vh] overflow-auto">
 <table class="min-w-full text-sm text-left border" id="table">
 <thead>
@@ -74,7 +71,6 @@ async function loadData(){
         };
     });
 
-    // FILTER DATA 0
     rawData = rawData.filter(row => {
         return !(Number(row["Pagu Program"] || 0) === 0 &&
                  Number(row["Pagu Pengadaan"] || 0) === 0 &&
@@ -87,7 +83,6 @@ async function loadData(){
     renderTable();
     renderSummary();
 
-    // LOAD LAST UPDATE
     fetch("data/last-update.txt")
         .then(res => res.text())
         .then(txt => {
@@ -99,7 +94,6 @@ function renderHeader(){
     const header = document.getElementById("headerRow");
     header.innerHTML = "";
 
-    // KOLOM NOMOR
     const thNo = document.createElement("th");
     thNo.className = "px-4 py-2 border";
     thNo.innerText = "No.";
@@ -172,9 +166,10 @@ function renderTable(){
     body.innerHTML = "";
 
     filteredData.forEach((row, index) => {
-        let tr = "<tr class='border'>";
 
-        // NOMOR URUT
+        // ✅ HANYA INI YANG DIUBAH
+        let tr = `<tr class='border ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}'>`;
+
         tr += `<td class="px-4 py-2 border">${index + 1}</td>`;
 
         Object.keys(row).forEach(col => {
