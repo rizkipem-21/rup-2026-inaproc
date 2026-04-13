@@ -30,10 +30,7 @@ th { cursor: pointer; position: sticky; top: 0; background: #e5e7eb; z-index: 5;
 <h1 class="text-2xl font-bold mb-1">
 Rekapitulasi RUP Kabupaten Kotawaringin Barat Tahun 2026
 </h1>
-
-<div id="lastUpdate" class="text-sm text-gray-600 mb-4">
-Memuat waktu update...
-</div>
+<div class="text-sm text-gray-600 mb-4" id="lastUpdate"></div>
 
 <!-- TOTAL -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4" id="summary"></div>
@@ -58,12 +55,10 @@ let rawData = [];
 let filteredData = [];
 let filters = {};
 
-// FORMAT RUPIAH
 function rupiah(n){
     return "Rp " + Number(n || 0).toLocaleString("id-ID");
 }
 
-// LOAD DATA
 async function loadData(){
     const res = await fetch("data/rekap.json");
     rawData = await res.json();
@@ -79,28 +74,36 @@ async function loadData(){
         };
     });
 
+    // FILTER DATA 0
+    rawData = rawData.filter(row => {
+        return !(Number(row["Pagu Program"] || 0) === 0 &&
+                 Number(row["Pagu Pengadaan"] || 0) === 0 &&
+                 Number(row["Total RUP Terumumkan"] || 0) === 0);
+    });
+
     filteredData = [...rawData];
 
     renderHeader();
     renderTable();
     renderSummary();
+
+    // LOAD LAST UPDATE
+    fetch("data/last-update.txt")
+        .then(res => res.text())
+        .then(txt => {
+            document.getElementById("lastUpdate").innerText = "Update terakhir: " + txt;
+        });
 }
 
-// LOAD LAST UPDATE
-async function loadLastUpdate(){
-    try{
-        const res = await fetch("data/last-update.txt?t=" + new Date().getTime());
-        const text = await res.text();
-        document.getElementById("lastUpdate").innerHTML = "Update terakhir: <b>" + text + "</b>";
-    }catch{
-        document.getElementById("lastUpdate").innerHTML = "Update terakhir: tidak tersedia";
-    }
-}
-
-// HEADER
 function renderHeader(){
     const header = document.getElementById("headerRow");
     header.innerHTML = "";
+
+    // KOLOM NOMOR
+    const thNo = document.createElement("th");
+    thNo.className = "px-4 py-2 border";
+    thNo.innerText = "No.";
+    header.appendChild(thNo);
 
     Object.keys(rawData[0]).forEach(col => {
         const th = document.createElement("th");
@@ -120,7 +123,6 @@ function renderHeader(){
     });
 }
 
-// FILTER
 function openFilter(column){
     document.querySelectorAll(".filter-box").forEach(el => el.style.display = "none");
 
@@ -161,19 +163,19 @@ function applyFilter(column){
         });
     });
 
-    box.style.display = "none";
-
     renderTable();
     renderSummary();
 }
 
-// TABLE
 function renderTable(){
     const body = document.getElementById("body");
     body.innerHTML = "";
 
-    filteredData.forEach(row => {
+    filteredData.forEach((row, index) => {
         let tr = "<tr class='border'>";
+
+        // NOMOR URUT
+        tr += `<td class="px-4 py-2 border">${index + 1}</td>`;
 
         Object.keys(row).forEach(col => {
             let val = row[col];
@@ -194,7 +196,6 @@ function renderTable(){
     });
 }
 
-// SUMMARY
 function renderSummary(){
     let totalPaguProgram = 0;
     let totalPaguPengadaan = 0;
@@ -224,7 +225,6 @@ function renderSummary(){
     `;
 }
 
-// DOWNLOAD
 function downloadExcel(){
     const ws = XLSX.utils.json_to_sheet(filteredData);
     const wb = XLSX.utils.book_new();
@@ -232,14 +232,11 @@ function downloadExcel(){
     XLSX.writeFile(wb, "rekap_rup.xlsx");
 }
 
-// CLOSE FILTER
 document.addEventListener("click", () => {
     document.querySelectorAll(".filter-box").forEach(el => el.style.display = "none");
 });
 
-// INIT
 loadData();
-loadLastUpdate();
 </script>
 
 </body>
