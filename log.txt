@@ -9984,3 +9984,53 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+[main 73a7973] auto update 15/04/2026 10.00.28,83
+ 4 files changed, 52 insertions(+), 237065 deletions(-)
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+To https://github.com/rizkipem-21/rup-2026-inaproc.git
+   b9e6cf7..73a7973  main -> main
+PUSH STATUS: 0 
+========================= 
+SELESAI 15/04/2026 10.00.31,48 
+========================= 
+START 15/04/2026 11.00.01,55 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+GENERATE EXCEL 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/Legacy_rup_paket-penyedia-terumumkan_2026.json
+	modified:   data/last-update.txt
+	modified:   log.txt
+	modified:   output/Rekap RUP Tahun 2026 (2026-04-15) Legacy.xlsx
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
