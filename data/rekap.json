@@ -143,11 +143,11 @@
     "Satuan Kerja": "Dinas Pekerjaan Umum dan Penataan Ruang",
     "Pagu Program": 105714344580.0,
     "Pagu Pengadaan": 105032048100.0,
-    "RUP Penyedia": 103997048100.0,
+    "RUP Penyedia": 104997048100.0,
     "RUP Swakelola": 35000000.0,
-    "Total RUP Terumumkan": 104032048100.0,
-    "Selisih RUP Terumumkan": -1682296480.0,
-    "Persentase": 98.40863935099469
+    "Total RUP Terumumkan": 105032048100.0,
+    "Selisih RUP Terumumkan": -682296480.0,
+    "Persentase": 99.35458477020244
   },
   {
     "Satuan Kerja": "Dinas Pemadam Kebakaran dan Penyelamatan",
@@ -752,7 +752,7 @@
   {
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin",
     "Pagu Program": 136086000000.0,
-    "Pagu Pengadaan": 83474806400.0,
+    "Pagu Pengadaan": 85676806400.0,
     "RUP Penyedia": 85676806400.0,
     "RUP Swakelola": 0.0,
     "Total RUP Terumumkan": 85676806400.0,

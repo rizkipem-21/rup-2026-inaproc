@@ -15,17 +15,17 @@
     },
     {
         "belanja_btt":  0,
-        "belanja_modal":  8387775000,
+        "belanja_modal":  10589775000,
         "belanja_non_pengadaan":  null,
         "belanja_operasi":  75087031400,
-        "belanja_pengadaan":  83474806400,
+        "belanja_pengadaan":  85676806400,
         "kd_klpd":  "D228",
         "kd_satker":  97672,
         "kd_satker_str":  "1.02.0.00.0.00.01.0001",
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_satker":  "Rumah Sakit Umum Daerah Sultan Imanuddin",
         "tahun_anggaran":  2026,
-        "total_belanja":  83474806400
+        "total_belanja":  85676806400
     },
     {
         "belanja_btt":  0,
