@@ -11353,3 +11353,83 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+GIT COMMIT 
+[main 3f3ce3b] auto update 17/04/2026 15.00.29,77
+ 3 files changed, 50 insertions(+), 1 deletion(-)
+GIT PUSH 
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+To https://github.com/rizkipem-21/rup-2026-inaproc.git
+   49ce052..3f3ce3b  main -> main
+PUSH STATUS: 0 
+========================= 
+SELESAI 17/04/2026 15.00.35,00 
+========================= 
+START 17/04/2026 16.00.01,30 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+GENERATE REKAP 
+GENERATE EXCEL 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update.txt
+	modified:   log.txt
+	modified:   output/Rekap RUP Tahun 2026 (2026-04-17) Legacy.xlsx
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GIT ADD 
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+========================= 
+START 20/04/2026  8.00.34,84 
+DOWNLOAD DATA 
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-penyedia-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-penyedia-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/paket-swakelola-terumumkan?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_paket-swakelola-terumumkan_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/master-satker?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_master-satker_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/program-master?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_program-master_2026.json
+
+DOWNLOAD: https://data.inaproc.id/api/legacy/rup/struktur-anggaran-pd?kode_klpd=D228&tahun=2026
+SUKSES -> Legacy_rup_struktur-anggaran-pd_2026.json
+
+SELESAI DOWNLOAD SEMUA
+GENERATE REKAP 
+GENERATE EXCEL 
+UPDATE LAST-UPDATE 
+GIT CONFIG 
+GIT STATUS 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   data/last-update.txt
+	modified:   log.txt
+	modified:   output/Rekap RUP Tahun 2026 (2026-04-17) Legacy.xlsx
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/last-update.txt
+	modified:   log.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	output/Rekap RUP Tahun 2026 (2026-04-20) Legacy.xlsx
+
+GIT ADD 
