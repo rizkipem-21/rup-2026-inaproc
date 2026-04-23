@@ -701,17 +701,17 @@
     },
     {
         "belanja_btt":  0,
-        "belanja_modal":  66780826,
-        "belanja_non_pengadaan":  null,
-        "belanja_operasi":  587614674,
-        "belanja_pengadaan":  654395500,
+        "belanja_modal":  0,
+        "belanja_non_pengadaan":  66780826,
+        "belanja_operasi":  2323620274,
+        "belanja_pengadaan":  2323620274,
         "kd_klpd":  "D228",
         "kd_satker":  318429,
         "kd_satker_str":  "1.02.0.00.0.00.01.0015",
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_satker":  "Puskesmas Semanggang",
         "tahun_anggaran":  2026,
-        "total_belanja":  654395500
+        "total_belanja":  2390401100
     },
     {
         "belanja_btt":  0,
