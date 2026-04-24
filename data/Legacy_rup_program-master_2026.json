@@ -1693,19 +1693,6 @@
         "is_deleted":  false,
         "jenis_klpd":  "KABUPATEN",
         "kd_klpd":  "D228",
-        "kd_program":  2915534,
-        "kd_program_lokal":  null,
-        "kd_program_str":  "1.02.02",
-        "kd_satker":  318425,
-        "nama_klpd":  "Kab. Kotawaringin Barat",
-        "nama_program":  "PROGRAM PEMENUHAN UPAYA KESEHATAN PERORANGAN DAN UPAYA KESEHATAN MASYARAKAT",
-        "pagu_program":  875107468,
-        "tahun_anggaran":  2026
-    },
-    {
-        "is_deleted":  false,
-        "jenis_klpd":  "KABUPATEN",
-        "kd_klpd":  "D228",
         "kd_program":  2860091,
         "kd_program_lokal":  null,
         "kd_program_str":  "2.16.02",
@@ -3234,6 +3221,32 @@
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_program":  "PROGRAM PEMBERDAYAAN MASYARAKAT BIDANG KESEHATAN",
         "pagu_program":  61600000,
+        "tahun_anggaran":  2026
+    },
+    {
+        "is_deleted":  false,
+        "jenis_klpd":  "KABUPATEN",
+        "kd_klpd":  "D228",
+        "kd_program":  2964188,
+        "kd_program_lokal":  null,
+        "kd_program_str":  "1.02.05",
+        "kd_satker":  318425,
+        "nama_klpd":  "Kab. Kotawaringin Barat",
+        "nama_program":  "PROGRAM PEMBERDAYAAN MASYARAKAT BIDANG KESEHATAN",
+        "pagu_program":  60370000,
+        "tahun_anggaran":  2026
+    },
+    {
+        "is_deleted":  false,
+        "jenis_klpd":  "KABUPATEN",
+        "kd_klpd":  "D228",
+        "kd_program":  2915534,
+        "kd_program_lokal":  null,
+        "kd_program_str":  "1.02.02",
+        "kd_satker":  318425,
+        "nama_klpd":  "Kab. Kotawaringin Barat",
+        "nama_program":  "PROGRAM PEMENUHAN UPAYA KESEHATAN PERORANGAN DAN UPAYA KESEHATAN MASYARAKAT",
+        "pagu_program":  739432268,
         "tahun_anggaran":  2026
     }
 ]

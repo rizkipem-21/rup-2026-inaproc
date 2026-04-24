@@ -366,9 +366,9 @@
     {
         "belanja_btt":  0,
         "belanja_modal":  0,
-        "belanja_non_pengadaan":  1362769200,
-        "belanja_operasi":  15288269163,
-        "belanja_pengadaan":  15288269163,
+        "belanja_non_pengadaan":  193873372,
+        "belanja_operasi":  16457164991,
+        "belanja_pengadaan":  16457164991,
         "kd_klpd":  "D228",
         "kd_satker":  105718,
         "kd_satker_str":  "2.11.3.28.0.00.01.0000",
@@ -645,17 +645,17 @@
     },
     {
         "belanja_btt":  0,
-        "belanja_modal":  3191250,
-        "belanja_non_pengadaan":  null,
-        "belanja_operasi":  418177468,
-        "belanja_pengadaan":  421368718,
+        "belanja_modal":  0,
+        "belanja_non_pengadaan":  3191250,
+        "belanja_operasi":  1288698018,
+        "belanja_pengadaan":  1288698018,
         "kd_klpd":  "D228",
         "kd_satker":  318425,
         "kd_satker_str":  "1.02.0.00.0.00.01.0011",
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_satker":  "Puskesmas Teluk Bogam",
         "tahun_anggaran":  2026,
-        "total_belanja":  421368718
+        "total_belanja":  1291889268
     },
     {
         "belanja_btt":  0,
