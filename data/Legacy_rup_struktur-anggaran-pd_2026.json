@@ -309,17 +309,17 @@
     },
     {
         "belanja_btt":  0,
-        "belanja_modal":  1417407990,
-        "belanja_non_pengadaan":  null,
-        "belanja_operasi":  3246244303,
-        "belanja_pengadaan":  4663652293,
+        "belanja_modal":  0,
+        "belanja_non_pengadaan":  3417407990,
+        "belanja_operasi":  27986573305,
+        "belanja_pengadaan":  27986573305,
         "kd_klpd":  "D228",
         "kd_satker":  105026,
         "kd_satker_str":  "1.02.0.00.0.00.01.0000",
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_satker":  "Dinas Kesehatan",
         "tahun_anggaran":  2026,
-        "total_belanja":  4663652293
+        "total_belanja":  31403981295
     },
     {
         "belanja_btt":  0,

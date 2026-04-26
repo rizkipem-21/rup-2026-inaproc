@@ -250,19 +250,6 @@
         "is_deleted":  false,
         "jenis_klpd":  "KABUPATEN",
         "kd_klpd":  "D228",
-        "kd_program":  2907988,
-        "kd_program_lokal":  null,
-        "kd_program_str":  "1.02.05",
-        "kd_satker":  105026,
-        "nama_klpd":  "Kab. Kotawaringin Barat",
-        "nama_program":  "PROGRAM PEMBERDAYAAN MASYARAKAT BIDANG KESEHATAN",
-        "pagu_program":  101523100,
-        "tahun_anggaran":  2026
-    },
-    {
-        "is_deleted":  false,
-        "jenis_klpd":  "KABUPATEN",
-        "kd_klpd":  "D228",
         "kd_program":  2859088,
         "kd_program_lokal":  null,
         "kd_program_str":  "2.09.03",
@@ -829,19 +816,6 @@
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_program":  "PROGRAM KOORDINASI KETENTRAMAN DAN KETERTIBAN UMUM",
         "pagu_program":  6650000,
-        "tahun_anggaran":  2026
-    },
-    {
-        "is_deleted":  false,
-        "jenis_klpd":  "KABUPATEN",
-        "kd_klpd":  "D228",
-        "kd_program":  2907987,
-        "kd_program_lokal":  null,
-        "kd_program_str":  "1.02.02",
-        "kd_satker":  105026,
-        "nama_klpd":  "Kab. Kotawaringin Barat",
-        "nama_program":  "PROGRAM PEMENUHAN UPAYA KESEHATAN PERORANGAN DAN UPAYA KESEHATAN MASYARAKAT",
-        "pagu_program":  28955268115,
         "tahun_anggaran":  2026
     },
     {
@@ -2928,19 +2902,6 @@
         "is_deleted":  false,
         "jenis_klpd":  "KABUPATEN",
         "kd_klpd":  "D228",
-        "kd_program":  2907989,
-        "kd_program_lokal":  null,
-        "kd_program_str":  "1.02.03",
-        "kd_satker":  105026,
-        "nama_klpd":  "Kab. Kotawaringin Barat",
-        "nama_program":  "PROGRAM PENINGKATAN KAPASITAS SUMBER DAYA MANUSIA KESEHATAN",
-        "pagu_program":  930319850,
-        "tahun_anggaran":  2026
-    },
-    {
-        "is_deleted":  false,
-        "jenis_klpd":  "KABUPATEN",
-        "kd_klpd":  "D228",
         "kd_program":  2911092,
         "kd_program_lokal":  null,
         "kd_program_str":  "1.05.04",
@@ -3175,6 +3136,19 @@
         "is_deleted":  false,
         "jenis_klpd":  "KABUPATEN",
         "kd_klpd":  "D228",
+        "kd_program":  2907988,
+        "kd_program_lokal":  null,
+        "kd_program_str":  "1.02.05",
+        "kd_satker":  105026,
+        "nama_klpd":  "Kab. Kotawaringin Barat",
+        "nama_program":  "PROGRAM PEMBERDAYAAN MASYARAKAT BIDANG KESEHATAN",
+        "pagu_program":  145348100,
+        "tahun_anggaran":  2026
+    },
+    {
+        "is_deleted":  false,
+        "jenis_klpd":  "KABUPATEN",
+        "kd_klpd":  "D228",
         "kd_program":  2906329,
         "kd_program_lokal":  null,
         "kd_program_str":  "1.02.02",
@@ -3247,6 +3221,32 @@
         "nama_klpd":  "Kab. Kotawaringin Barat",
         "nama_program":  "PROGRAM PEMENUHAN UPAYA KESEHATAN PERORANGAN DAN UPAYA KESEHATAN MASYARAKAT",
         "pagu_program":  739432268,
+        "tahun_anggaran":  2026
+    },
+    {
+        "is_deleted":  false,
+        "jenis_klpd":  "KABUPATEN",
+        "kd_klpd":  "D228",
+        "kd_program":  2907987,
+        "kd_program_lokal":  null,
+        "kd_program_str":  "1.02.02",
+        "kd_satker":  105026,
+        "nama_klpd":  "Kab. Kotawaringin Barat",
+        "nama_program":  "PROGRAM PEMENUHAN UPAYA KESEHATAN PERORANGAN DAN UPAYA KESEHATAN MASYARAKAT",
+        "pagu_program":  26512608905,
+        "tahun_anggaran":  2026
+    },
+    {
+        "is_deleted":  false,
+        "jenis_klpd":  "KABUPATEN",
+        "kd_klpd":  "D228",
+        "kd_program":  2907989,
+        "kd_program_lokal":  null,
+        "kd_program_str":  "1.02.03",
+        "kd_satker":  105026,
+        "nama_klpd":  "Kab. Kotawaringin Barat",
+        "nama_program":  "PROGRAM PENINGKATAN KAPASITAS SUMBER DAYA MANUSIA KESEHATAN",
+        "pagu_program":  2514396662,
         "tahun_anggaran":  2026
     }
 ]
