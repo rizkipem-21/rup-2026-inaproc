@@ -107,14 +107,14 @@
     "Satuan Kerja": "Dinas Kepemudaan dan Olahraga - 2.19.0.00.0.00.01.0000",
     "Pagu Program": 18225624424.0,
     "Pagu Pengadaan": 2454000424.0,
-    "Paket Penyedia": 90.0,
-    "RUP Penyedia": 2379000424.0,
+    "Paket Penyedia": 91.0,
+    "RUP Penyedia": 2454000424.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 90.0,
-    "Total RUP Terumumkan": 2379000424.0,
-    "Selisih RUP Terumumkan": -75000000.0,
-    "Persentase": 96.9437658092271
+    "Total Paket Terumumkan": 91.0,
+    "Total RUP Terumumkan": 2454000424.0,
+    "Selisih RUP Terumumkan": 0.0,
+    "Persentase": 100.0
   },
   {
     "Satuan Kerja": "Dinas Kependudukan dan Pencatatan Sipil - 2.12.0.00.0.00.01.0000",
@@ -978,14 +978,14 @@
     "Satuan Kerja": "Rumah Sakit Umum Daerah Sultan Imanuddin - 1.02.0.00.0.00.01.0001",
     "Pagu Program": 136086000000.0,
     "Pagu Pengadaan": 85061928740.0,
-    "Paket Penyedia": 87.0,
-    "RUP Penyedia": 85683636832.0,
+    "Paket Penyedia": 92.0,
+    "RUP Penyedia": 86416589628.0,
     "Paket Swakelola": 0.0,
     "RUP Swakelola": 0.0,
-    "Total Paket Terumumkan": 87.0,
-    "Total RUP Terumumkan": 85683636832.0,
-    "Selisih RUP Terumumkan": 621708092.0,
-    "Persentase": 100.73088877857485
+    "Total Paket Terumumkan": 92.0,
+    "Total RUP Terumumkan": 86416589628.0,
+    "Selisih RUP Terumumkan": 1354660888.0,
+    "Persentase": 101.59255839606065
   },
   {
     "Satuan Kerja": "Satuan Polisi Pamong Praja - 1.05.0.00.0.00.01.0000",
